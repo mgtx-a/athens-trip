@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athens · Albania — May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Bricolage+Grotesque:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment: #edeae2;
+  --surface: #f8f4ee;
+  --white: #fdfcf9;
+  --athens: #0c2840;
+  --athens-mid: #1b4870;
+  --athens-bg: #e8f1f8;
+  --albania: #6b2e14;
+  --albania-mid: #9b4420;
+  --tirana: #1a4a2e;
+  --tirana-bg: #e6f2eb;
+  --gjiro: #4a1a6e;
+  --gjiro-bg: #f0e8f8;
+  --berat: #7a1a3e;
+  --berat-bg: #f8e8ee;
+  --gold: #b8882e;
+  --gold-light: #f5e8c8;
+  --sage: #2d5030;
+  --sage-light: #e4ede4;
+  --warn: #92400e;
+  --warn-bg: #fef3c7;
+  --ink: #1a1510;
+  --muted: #7a6e60;
+  --faint: #c8bfb0;
+  --border: #d8d0c4;
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body: 'Bricolage Grotesque', sans-serif;
+  --ff-mono: 'JetBrains Mono', monospace;
+  --main-nav-h: 44px;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+body {
+  font-family: var(--ff-body);
+  background: var(--parchment);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+
+/* ── HERO ── */
+.hero {
+  background: var(--athens);
+  color: var(--white);
+  padding: 60px 32px 52px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(184,136,46,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 20%, rgba(27,72,112,0.4) 0%, transparent 60%);
+}
+.hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+
+.hero-eyebrow {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  overflow: hidden;
+}
+.hero-eyebrow span { display: inline-block; }
+
+.hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line span { display: block; }
+
+.hero-amp {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 5vw, 2.8rem);
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.02em;
+  display: block;
+  margin: 6px 0;
+}
+
+.hero-divider {
+  width: 48px; height: 1px;
+  background: var(--gold);
+  margin: 28px 0;
+  overflow: hidden;
+}
+.hero-divider span { display: block; height: 100%; background: var(--gold); }
+
+.hero-meta {
+  font-size: 0.82rem; font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+  overflow: hidden;
+}
+.hero-meta span { display: block; }
+
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 24px;
+}
+.hero-tag {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem; letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px; border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  opacity: 0;
+}
+
+/* ── MAIN TAB NAV ── */
+.main-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 var(--border), 0 2px 12px rgba(0,0,0,0.05);
+  display: flex; justify-content: center;
+}
+.mn-inner { display: flex; }
+.mn-tab {
+  font-family: var(--ff-body);
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 0 28px; height: var(--main-nav-h);
+  border: none; background: none; cursor: pointer;
+  color: var(--muted); position: relative;
+  transition: color 0.2s;
+}
+.mn-tab::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: transparent; transition: background 0.2s;
+}
+.mn-tab.active { color: var(--ink); font-weight: 600; }
+.mn-tab.active::after { background: var(--ink); }
+.mn-tab:hover { color: var(--ink); }
+
+/* ── PHASE NAV ── */
+.phase-nav {
+  position: sticky; top: var(--main-nav-h); z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 var(--border), 0 4px 16px rgba(0,0,0,0.06);
+  display: flex; overflow-x: auto;
+}
+.phase-nav::-webkit-scrollbar { display: none; }
+.phase-nav-inner {
+  display: flex; width: 100%; max-width: 760px;
+  margin: 0 auto; padding: 0 24px;
+  position: relative;
+}
+.phase-tab {
+  font-family: var(--ff-body);
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 14px 20px;
+  border: none; background: none; cursor: pointer;
+  color: var(--muted); white-space: nowrap;
+  transition: color 0.2s;
+  position: relative;
+}
+.phase-tab::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: transparent;
+  transition: background 0.2s;
+}
+.phase-tab[data-phase="athens"].active { color: var(--athens); }
+.phase-tab[data-phase="athens"].active::after { background: var(--athens); }
+.phase-tab[data-phase="albania"].active { color: var(--albania); }
+.phase-tab[data-phase="albania"].active::after { background: var(--albania); }
+.phase-tab:hover { color: var(--ink); }
+
+/* ── MAIN CONTAINER ── */
+.main { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ── PHASE HEADER ── */
+.phase-section { padding-top: 48px; }
+.phase-section:first-child { padding-top: 40px; }
+
+.phase-header {
+  display: flex; align-items: baseline; gap: 20px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.phase-number {
+  font-family: var(--ff-display);
+  font-size: 0.65rem; font-weight: 700; font-style: italic;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
+}
+.phase-name {
+  font-family: var(--ff-display);
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.phase-name.athens { color: var(--athens); }
+.phase-name.albania { color: var(--albania); }
+.phase-dates {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem; color: var(--muted);
+  margin-left: auto; letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ── DAY CARD ── */
+.day-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.day-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+
+.day-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+.day-header::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.day-card.athens .day-header::before { background: var(--athens); }
+.day-card.albania .day-header::before { background: var(--albania); }
+
+.day-ghost {
+  position: absolute; right: 56px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--ff-display);
+  font-size: 5rem; font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  opacity: 0.04;
+}
+.day-card.athens .day-ghost { color: var(--athens); }
+.day-card.albania .day-ghost { color: var(--albania); }
+
+.day-num-label {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 2px;
+}
+.day-card.athens .day-num-label { background: #e8f0f7; color: var(--athens); }
+.day-card.albania .day-num-label { background: #f5ece8; color: var(--albania); }
+
+.day-text {}
+.day-date {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem; color: var(--muted);
+  letter-spacing: 0.5px; margin-bottom: 3px;
+}
+.day-title {
+  font-family: var(--ff-display);
+  font-size: 1rem; font-weight: 700;
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+
+.day-chevron {
+  font-size: 0.7rem; color: var(--faint);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  flex-shrink: 0;
+}
+.day-card.open .day-chevron { transform: rotate(180deg); }
+
+.day-body {
+  height: 0; overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.day-body-inner {
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── TIMELINE ── */
+.timeline { padding-top: 20px; position: relative; }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 5px; top: 24px; bottom: 8px;
+  width: 1px; background: var(--border);
+}
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.tl-item.visible { opacity: 1; transform: none; }
+.tl-item:last-child { margin-bottom: 0; }
+
+.tl-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  margin-top: 5px; flex-shrink: 0;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1.5px var(--faint);
+}
+.dot-arrive  { background: #10b981; box-shadow: 0 0 0 1.5px #10b981; }
+.dot-eat     { background: #d97706; box-shadow: 0 0 0 1.5px #d97706; }
+.dot-see     { background: var(--athens-mid); box-shadow: 0 0 0 1.5px var(--athens-mid); }
+.dot-move    { background: #7c3aed; box-shadow: 0 0 0 1.5px #7c3aed; }
+.dot-pray    { background: #0d9488; box-shadow: 0 0 0 1.5px #0d9488; }
+.dot-rest    { background: var(--faint); box-shadow: 0 0 0 1.5px var(--faint); }
+.dot-ferry   { background: #0284c7; box-shadow: 0 0 0 1.5px #0284c7; }
+
+.tl-content {}
+.tl-time {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem; color: var(--muted);
+  margin-bottom: 2px;
+}
+.tl-label {
+  font-size: 0.9rem; font-weight: 600;
+  line-height: 1.3; margin-bottom: 4px;
+}
+.tl-detail {
+  font-size: 0.78rem; color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── FLIGHT BAR ── */
+.flight-bar {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--athens); color: var(--white);
+  border-radius: 4px; padding: 12px 16px;
+  margin-top: 10px;
+}
+.flight-iata { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 900; letter-spacing: -0.02em; }
+.flight-city { font-family: var(--ff-mono); font-size: 0.58rem; opacity: 0.45; letter-spacing: 0.5px; display: block; margin-top: -2px; }
+.flight-line { flex: 1; display: flex; align-items: center; gap: 6px; }
+.flight-rule { flex: 1; height: 1px; background: rgba(255,255,255,0.15); }
+.flight-plane { font-size: 0.9rem; opacity: 0.5; }
+.flight-info { text-align: right; }
+.flight-num { font-family: var(--ff-mono); font-size: 0.65rem; color: var(--gold); letter-spacing: 1px; }
+.flight-time { font-size: 0.72rem; opacity: 0.5; margin-top: 2px; }
+
+/* ── INFO BOX ── */
+.info {
+  border-radius: 3px; padding: 12px 14px;
+  margin-top: 10px; font-size: 0.78rem;
+  line-height: 1.7;
+}
+.info.blue   { background: #eff6ff; border-left: 2px solid #3b82f6; }
+.info.amber  { background: #fffbeb; border-left: 2px solid #f59e0b; }
+.info.teal   { background: #f0fdfa; border-left: 2px solid #14b8a6; }
+.info.purple { background: #faf5ff; border-left: 2px solid #8b5cf6; }
+.info.red    { background: #fff1f2; border-left: 2px solid #f43f5e; }
+.info-row { display: flex; gap: 8px; }
+.info-row + .info-row { margin-top: 3px; }
+.ik {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase; color: var(--muted);
+  min-width: 62px; margin-top: 3px;
+}
+
+/* ── RESTAURANT CARD ── */
+.resto {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sage);
+  border-radius: 3px; padding: 14px 16px;
+  margin-top: 10px;
+  transition: transform 0.2s, box-shadow 0.2s, border-left-width 0.2s;
+}
+.resto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border-left-width: 5px;
+}
+.resto-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 5px; }
+.resto-name { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+.resto-halal {
+  font-family: var(--ff-mono);
+  font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 2px;
+  background: var(--sage-light); color: var(--sage);
+}
+.resto-stars { margin-left: auto; font-size: 0.75rem; color: #d97706; font-weight: 600; }
+.resto-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 6px; }
+.resto-picks { font-size: 0.78rem; color: var(--ink); }
+.resto-picks strong { color: var(--sage); }
+.resto-map {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--ff-mono); font-size: 0.62rem;
+  color: var(--athens-mid); text-decoration: none;
+  margin-top: 8px; letter-spacing: 0.3px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.resto-map:hover { border-bottom-color: var(--athens-mid); }
+
+/* ── CHECKLIST ── */
+.checklist { display: grid; gap: 8px; margin-top: 10px; }
+.check-item {
+  display: flex; gap: 10px; align-items: baseline;
+  font-size: 0.82rem; cursor: pointer;
+}
+.check-item input[type=checkbox] { margin-top: 2px; accent-color: var(--sage); }
+.check-item.done label { text-decoration: line-through; color: var(--muted); }
+
+/* ── SUMMARY STATS ── */
+.stats-row { display: flex; flex-wrap: wrap; gap: 0; margin-top: 24px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--white); }
+.stat-item { flex: 1; min-width: 100px; padding: 20px 16px; text-align: center; border-right: 1px solid var(--border); }
+.stat-item:last-child { border-right: none; }
+.stat-big {
+  font-family: var(--ff-display);
+  font-size: 2.2rem; font-weight: 900;
+  letter-spacing: -0.04em; line-height: 1;
+}
+.stat-item:nth-child(1) .stat-big { color: var(--athens); }
+.stat-item:nth-child(2) .stat-big { color: var(--albania); }
+.stat-item:nth-child(3) .stat-big { color: var(--sage); }
+.stat-item:nth-child(4) .stat-big { color: var(--gold); }
+.stat-item:nth-child(5) .stat-big { color: #7c3aed; }
+.stat-item:nth-child(6) .stat-big { color: #0284c7; }
+.stat-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 4px; font-family: var(--ff-mono); }
+
+/* ── RESTO QUICK LIST ── */
+.resto-list { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--white); margin-top: 16px; }
+.rl-item { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+.rl-item:last-child { border-bottom: none; }
+.rl-name { font-weight: 600; }
+.rl-meta { font-size: 0.72rem; color: var(--muted); text-align: right; }
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); margin: 20px 0 8px;
+}
+
+/* ── COST TABLE ── */
+.cost-table { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--white); }
+.ct-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 16px; border-bottom: 1px solid var(--border); font-size: 0.8rem; }
+.ct-row:last-child { border-bottom: none; }
+.ct-row.total { background: var(--surface); font-weight: 700; }
+.ct-amt { font-family: var(--ff-mono); font-size: 0.78rem; color: var(--athens); white-space: nowrap; }
+
+/* ── ANIMATE IN ── */
+.fade-up {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: none; }
+
+/* ── DAY STATS STRIP ── */
+.day-stats {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 12px 24px; background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.ds-pill {
+  font-family: var(--ff-mono); font-size: 0.62rem;
+  letter-spacing: 0.3px;
+  padding: 3px 9px; border-radius: 2px;
+  background: var(--white); border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center; padding: 48px 24px;
+  font-family: var(--ff-mono); font-size: 0.62rem;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ── LOAD ANIMATIONS ── */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes growLine {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+.hero-eyebrow span { animation: slideUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.1s both; }
+.hero-title .line:nth-child(1) span { animation: slideUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.2s both; }
+.hero-title .line:nth-child(2) span { animation: slideUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.35s both; }
+.hero-title .line:nth-child(3) span { animation: slideUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.5s both; }
+.hero-divider span { animation: growLine 0.8s cubic-bezier(0.4,0,0.2,1) 0.7s both; }
+.hero-meta span { animation: slideUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.8s both; }
+.hero-tag:nth-child(1) { animation: fadeIn 0.5s ease 1.0s both; }
+.hero-tag:nth-child(2) { animation: fadeIn 0.5s ease 1.1s both; }
+.hero-tag:nth-child(3) { animation: fadeIn 0.5s ease 1.2s both; }
+.hero-tag:nth-child(4) { animation: fadeIn 0.5s ease 1.3s both; }
+
+/* ══ HALAL VIEW ══ */
+
+/* Controls bar */
+.hcontrols {
+  position: sticky; top: var(--main-nav-h); z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.hcontrols-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; }
+.filter-row { display: flex; gap: 0; border-bottom: 1px solid var(--border); overflow-x: auto; }
+.filter-row::-webkit-scrollbar { display: none; }
+.ftab {
+  font-family: var(--ff-body); font-size: 0.73rem; font-weight: 500;
+  padding: 11px 18px; border: none; background: none;
+  cursor: pointer; color: var(--muted); white-space: nowrap;
+  border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;
+}
+.ftab:hover { color: var(--ink); }
+.ftab.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 600; }
+.ftab[data-f="athens"].active  { color: var(--athens);  border-bottom-color: var(--athens); }
+.ftab[data-f="tirana"].active  { color: var(--tirana);  border-bottom-color: var(--tirana); }
+.ftab[data-f="gjiro"].active   { color: var(--gjiro);   border-bottom-color: var(--gjiro); }
+.ftab[data-f="berat"].active   { color: var(--berat);   border-bottom-color: var(--berat); }
+.ftab[data-f="itinerary"].active { color: var(--gold); border-bottom-color: var(--gold); }
+.search-row { padding: 8px 16px; display: flex; align-items: center; gap: 10px; }
+.search-input {
+  flex: 1; max-width: 300px; font-family: var(--ff-body); font-size: 0.8rem;
+  padding: 6px 12px; border: 1px solid var(--border); border-radius: 3px;
+  background: var(--surface); color: var(--ink); outline: none;
+}
+.search-input::placeholder { color: var(--faint); }
+.search-input:focus { border-color: var(--athens); }
+.count-label { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.3px; margin-left: auto; }
+
+/* Halal main */
+.hmain { max-width: 900px; margin: 0 auto; padding: 0 16px 64px; }
+
+/* City section */
+.city-section { padding-top: 32px; }
+.city-header { display: flex; align-items: baseline; gap: 14px; padding-bottom: 12px; margin-bottom: 6px; border-bottom: 1px solid var(--border); }
+.city-label { font-family: var(--ff-display); font-size: 1.5rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+.city-label.athens { color: var(--athens); }
+.city-label.tirana { color: var(--tirana); }
+.city-label.gjiro  { color: var(--gjiro); }
+.city-label.berat  { color: var(--berat); }
+.city-sub  { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.5px; }
+.city-count { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--muted); margin-left: auto; }
+
+/* Restaurant row */
+.rest-row {
+  display: grid; grid-template-columns: 1fr auto; gap: 12px 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--border); cursor: default;
+  transition: background 0.1s;
+}
+.rest-row:last-child { border-bottom: none; }
+.rest-row:hover { background: rgba(255,255,255,0.6); margin: 0 -12px; padding: 14px 12px; border-radius: 3px; }
+.rest-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.rest-name { font-family: var(--ff-display); font-size: 0.97rem; font-weight: 700; letter-spacing: -0.01em; }
+.tag {
+  font-family: var(--ff-mono); font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.8px; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+}
+.tag-halal     { background: var(--sage-light); color: var(--sage); }
+.tag-itinerary { background: var(--warn-bg); color: var(--warn); }
+.tag-warn      { background: #fee2e2; color: #991b1b; }
+.tag-24hr      { background: #dbeafe; color: #1d4ed8; }
+.rest-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 0.75rem; color: var(--muted); }
+.rest-cuisine { font-weight: 500; color: var(--ink); }
+.meta-sep { color: var(--faint); }
+.rest-evidence { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--sage); }
+.rest-stars-row { display: flex; align-items: center; gap: 6px; margin-top: 5px; }
+.stars { font-size: 0.75rem; color: #d97706; letter-spacing: 1px; }
+.rating-n { font-family: var(--ff-mono); font-size: 0.72rem; font-weight: 600; color: var(--ink); }
+.review-ct { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--muted); }
+.price-tag { font-family: var(--ff-mono); font-size: 0.62rem; padding: 2px 7px; border-radius: 2px; white-space: nowrap; }
+.price-budget { background: #d1fae5; color: #065f46; }
+.price-mid    { background: #fef9c3; color: #854d0e; }
+.price-higher { background: #fee2e2; color: #991b1b; }
+.rest-warn { font-size: 0.72rem; color: var(--warn); margin-top: 4px; display: flex; align-items: baseline; gap: 4px; }
+
+/* Map button */
+.rest-actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; justify-content: flex-start; padding-top: 2px; }
+.map-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--ff-mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none;
+  padding: 6px 12px; border-radius: 2px; white-space: nowrap;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.map-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.map-btn.athens-btn { background: var(--athens);  color: white; }
+.map-btn.tirana-btn { background: var(--tirana);  color: white; }
+.map-btn.gjiro-btn  { background: var(--gjiro);   color: white; }
+.map-btn.berat-btn  { background: var(--berat);   color: white; }
+
+/* Albania notes */
+.albania-note { background: var(--tirana-bg); border: 1px solid #b3d4be; border-radius: 3px; padding: 12px 16px; font-size: 0.78rem; color: var(--tirana); margin-top: 20px; margin-bottom: -8px; line-height: 1.6; }
+.avoid-box { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 3px; padding: 12px 16px; font-size: 0.78rem; color: #9f1239; margin-top: 10px; line-height: 1.6; }
+.empty { text-align: center; padding: 48px 24px; font-family: var(--ff-display); font-style: italic; font-size: 1.2rem; color: var(--faint); }
+
+@media (max-width: 520px) {
+  .rest-row { grid-template-columns: 1fr; }
+  .rest-actions { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .city-label { font-size: 1.2rem; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .hero { padding: 48px 20px 40px; }
+  .day-header { padding: 16px 18px; gap: 12px; }
+  .day-body-inner { padding: 0 18px 18px; }
+  .day-stats { padding: 10px 18px; }
+  .stat-item { min-width: 80px; padding: 16px 10px; }
+  .stats-row { flex-wrap: wrap; }
+  .flight-bar { flex-wrap: wrap; gap: 10px; }
+  .phase-name { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════ HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span>Travel Itinerary · Afham & Alya</span></div>
+    <h1 class="hero-title">
+      <span class="line"><span>Athens</span></span>
+      <span class="line"><span class="hero-amp">& Albania</span></span>
+      <span class="line" style="opacity:0.25;"><span>——————</span></span>
+    </h1>
+    <div class="hero-divider"><span></span></div>
+    <div class="hero-meta"><span>May 27 – Jun 3, 2026 · 8 Days · 2 Countries · 5 Cities</span></div>
+    <div class="hero-tags">
+      <div class="hero-tag">✈ KUL → ATH → TIA → ATH → KUL</div>
+      <div class="hero-tag">🕌 Fully Halal</div>
+      <div class="hero-tag">🏝 Aegina Island</div>
+      <div class="hero-tag">🏰 Gjirokastër · Berat</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════ MAIN TAB NAV -->
+<nav class="main-nav" id="main-nav">
+  <div class="mn-inner">
+    <button class="mn-tab active" data-view="iti" onclick="switchView('iti')">Itinerary</button>
+    <button class="mn-tab" data-view="halal" onclick="switchView('halal')">Halal Food</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════ ITINERARY VIEW -->
+<div id="v-iti">
+
+<!-- ══════════════════════════════════ PHASE NAV -->
+<nav class="phase-nav">
+  <div class="phase-nav-inner">
+    <button class="phase-tab active" data-phase="athens" onclick="scrollPhase('p-athens1')">Athens I · D1–3</button>
+    <button class="phase-tab" data-phase="albania" onclick="scrollPhase('p-albania')">Albania · D4–5</button>
+    <button class="phase-tab" data-phase="athens" onclick="scrollPhase('p-athens2')">Athens II · D6–8</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════ CONTENT -->
+<main class="main">
+
+<!-- ╔════════════════════════════════╗ -->
+<!-- ║  ATHENS PHASE 1                ║ -->
+<!-- ╚════════════════════════════════╝ -->
+<section class="phase-section" id="p-athens1">
+  <div class="phase-header fade-up">
+    <div>
+      <div class="phase-number">Phase One</div>
+      <div class="phase-name athens">Athens</div>
+    </div>
+    <div class="phase-dates">27–29 May</div>
+  </div>
+
+  <!-- ─── DAY 1 ─── -->
+  <div class="day-card athens fade-up" id="d1">
+    <div class="day-header" onclick="toggle('d1')">
+      <div class="day-num-label">Day 01</div>
+      <div class="day-text">
+        <div class="day-date">Wednesday · 27 May 2026</div>
+        <div class="day-title">Arrive Athens · Plaka & Monastiraki</div>
+      </div>
+      <div class="day-ghost">01</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-arrive"></div>
+            <div class="tl-content">
+              <div class="tl-time">12:35</div>
+              <div class="tl-label">Land at Athens International (ATH)</div>
+              <div class="tl-detail">Eleftherios Venizelos · Clear immigration, collect bags</div>
+              <div class="flight-bar">
+                <div><div class="flight-iata">KUL</div><div class="flight-city">Kuala Lumpur</div></div>
+                <div class="flight-line"><div class="flight-rule"></div><div class="flight-plane">✈</div><div class="flight-rule"></div></div>
+                <div><div class="flight-iata">ATH</div><div class="flight-city">Athens</div></div>
+                <div class="flight-info"><div class="flight-num">EY VIA AUH</div><div class="flight-time">Dep May 26 night</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">13:00 – 14:00</div>
+              <div class="tl-label">Airport → Hotel via Metro</div>
+              <div class="tl-detail">Metro Line 3 (Blue) from Airport → Monastiraki · ~40 min</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Ticket</span> Airport express €9/person — buy at station</div>
+                <div class="info-row"><span class="ik">Hotel</span> TBD — book near Monastiraki / Plaka area</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">~14:30</div>
+              <div class="tl-label">Lunch — Yalla Yalla</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Yalla Yalla</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.4</span></div>
+                <div class="resto-meta">Middle Eastern · Monastiraki · €7–15/person</div>
+                <div class="resto-picks"><strong>Order:</strong> Falafel wrap, Shawarma plate, Hummus</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Yalla+Yalla+Monastiraki+Athens" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">15:30 – 17:30</div>
+              <div class="tl-label">Plaka Neighbourhood</div>
+              <div class="tl-detail">Oldest district in Athens — neoclassical houses, bougainvillea, souvenir streets. Flat, easy walking.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">17:30 – 19:00</div>
+              <div class="tl-label">Monastiraki Flea Market</div>
+              <div class="tl-detail">Vintage clothes, antiques, local crafts. Prices are negotiable.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">19:30</div>
+              <div class="tl-label">Dinner — Falafel Monastiraki</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Falafel Monastiraki</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.5</span></div>
+                <div class="resto-meta">Falafel · Monastiraki Square · €5–10/person</div>
+                <div class="resto-picks"><strong>Order:</strong> Falafel sandwich, Pita with tahini</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Falafel+Monastiraki+Athens" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">🚇 Metro €9/person</span>
+      <span class="ds-pill">🍽 2 halal meals</span>
+      <span class="ds-pill">📍 Plaka + Monastiraki</span>
+    </div>
+  </div>
+
+  <!-- ─── DAY 2 ─── -->
+  <div class="day-card athens fade-up" id="d2">
+    <div class="day-header" onclick="toggle('d2')">
+      <div class="day-num-label">Day 02</div>
+      <div class="day-text">
+        <div class="day-date">Thursday · 28 May 2026</div>
+        <div class="day-title">Acropolis Museum · Syntagma · Acropolis Sunset</div>
+      </div>
+      <div class="day-ghost">02</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">09:00 – 12:00</div>
+              <div class="tl-label">Acropolis Museum</div>
+              <div class="tl-detail">Original Acropolis artifacts — friezes, sculptures, caryatids. Glass floor on top level. Plan 2–3 hrs.</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Ticket</span> €10 adult · Book online to skip queues</div>
+                <div class="info-row"><span class="ik">Metro</span> Acropolis station · Line 2 (Red)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">12:30</div>
+              <div class="tl-label">Lunch — Indian Chef</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Indian Chef</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.3</span></div>
+                <div class="resto-meta">Indian · Syntagma area · €10–18/person</div>
+                <div class="resto-picks"><strong>Order:</strong> Butter Chicken, Garlic Naan, Chicken Biryani</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Indian+Chef+Athens+Greece" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">14:00 – 16:00</div>
+              <div class="tl-label">Syntagma Square · Evzone Guard Change</div>
+              <div class="tl-detail">Watch the famous guard change at the Tomb of the Unknown Soldier — happens every hour on the hour. National Gardens nearby for shade.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-rest"></div>
+            <div class="tl-content">
+              <div class="tl-time">16:00 – 17:00</div>
+              <div class="tl-label">Rest at Hotel</div>
+              <div class="tl-detail">Cool down before the Acropolis climb</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">17:00 – 19:30</div>
+              <div class="tl-label">Acropolis — Golden Hour Visit</div>
+              <div class="tl-detail">Late afternoon = lower crowds, warm light. Parthenon, Erechtheion, Propylaea, Odeon views. Uneven cobblestones — wear good shoes.</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Ticket</span> €20 adult (combo) · Book online — fills up same day</div>
+                <div class="info-row"><span class="ik">Sunset</span> ~20:30 in late May — you'll catch golden hour</div>
+                <div class="info-row"><span class="ik">Closes</span> ~20:00 in summer · Confirm when booking</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">19:30</div>
+              <div class="tl-label">Dinner — Namaste Indian Restaurant</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Namaste Indian Restaurant</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.3</span></div>
+                <div class="resto-meta">Indian · Near Acropolis · €12–20/person</div>
+                <div class="resto-picks"><strong>Order:</strong> Lamb Rogan Josh, Tandoori Chicken, Mango Lassi</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Namaste+Indian+Restaurant+Athens" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">🏛 Museum €10</span>
+      <span class="ds-pill">🏛 Acropolis €20</span>
+      <span class="ds-pill">🌅 Sunset visit 17:00</span>
+      <span class="ds-pill">🍽 2 halal meals</span>
+    </div>
+  </div>
+
+  <!-- ─── DAY 3 ─── -->
+  <div class="day-card athens fade-up" id="d3">
+    <div class="day-header" onclick="toggle('d3')">
+      <div class="day-num-label">Day 03</div>
+      <div class="day-text">
+        <div class="day-date">Friday · 29 May 2026</div>
+        <div class="day-title">Luggage Drop · Athens → Tirana</div>
+      </div>
+      <div class="day-ghost">03</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">09:00 – 11:00</div>
+              <div class="tl-label">Bounce Luggage Drop + Monastiraki Browse</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Storage</span> Bounce — Monastiraki Square area</div>
+                <div class="info-row"><span class="ik">Rate</span> €4.25/day · 3 days = <strong>€12.75 total</strong></div>
+                <div class="info-row"><span class="ik">Bag</span> Your 76×43×36 cm fits (≤160 cm total ✓)</div>
+                <div class="info-row"><span class="ik">Book</span> bounce.com — pre-book to guarantee spot</div>
+              </div>
+              <div class="tl-detail" style="margin-top:8px;">Then explore Monastiraki with just a daypack until flight.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">12:30</div>
+              <div class="tl-label">Check-out → Airport</div>
+              <div class="tl-detail">Metro Line 3 → Airport · ~40 min · €9/person · Allow 2.5 hrs before flight</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">16:00 → 16:25</div>
+              <div class="tl-label">Fly Athens → Tirana</div>
+              <div class="flight-bar">
+                <div><div class="flight-iata">ATH</div><div class="flight-city">Athens</div></div>
+                <div class="flight-line"><div class="flight-rule"></div><div class="flight-plane">✈</div><div class="flight-rule"></div></div>
+                <div><div class="flight-iata">TIA</div><div class="flight-city">Tirana</div></div>
+                <div class="flight-info"><div class="flight-num">~1 HR</div><div class="flight-time">Dep 16:00 · Arr 16:25</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">~17:00</div>
+              <div class="tl-label">TIA → Tirana City Centre</div>
+              <div class="tl-detail">Rinas Express bus ~€3 or taxi ~€20–25 · ~25 min</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-pray"></div>
+            <div class="tl-content">
+              <div class="tl-time">~18:30</div>
+              <div class="tl-label">Et'hem Bej Mosque · Skanderbeg Square</div>
+              <div class="tl-detail">18th-century mosque in the heart of Tirana. Maghrib prayer likely around this time.</div>
+              <div class="info teal">
+                <div class="info-row"><span class="ik">Entry</span> Free · Modest dress required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">19:00 – 20:30</div>
+              <div class="tl-label">Blloku District Evening Walk</div>
+              <div class="tl-detail">Tirana's trendy neighbourhood — cafés, street art, old communist villas.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">20:30</div>
+              <div class="tl-label">Dinner — Hayal Et</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Hayal Et</span><span class="resto-halal">Halal · 117 mentions</span><span class="resto-stars">★ 4.5</span></div>
+                <div class="resto-meta">Turkish Grill · Blloku, Tirana · Mid-range</div>
+                <div class="resto-picks"><strong>Order:</strong> Mixed grill platter, Adana kebab, Turkish pide</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Hayal+Et+Tirana+Albania" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">🧳 Luggage stored €12.75</span>
+      <span class="ds-pill">✈ ATH→TIA 16:00</span>
+      <span class="ds-pill">🕌 Et'hem Bej Mosque</span>
+    </div>
+  </div>
+</section>
+
+<!-- ╔════════════════════════════════╗ -->
+<!-- ║  ALBANIA                       ║ -->
+<!-- ╚════════════════════════════════╝ -->
+<section class="phase-section" id="p-albania">
+  <div class="phase-header fade-up">
+    <div>
+      <div class="phase-number">Phase Two</div>
+      <div class="phase-name albania">Albania</div>
+    </div>
+    <div class="phase-dates">30–31 May</div>
+  </div>
+
+  <!-- ─── DAY 4 ─── -->
+  <div class="day-card albania fade-up" id="d4">
+    <div class="day-header" onclick="toggle('d4')">
+      <div class="day-num-label">Day 04</div>
+      <div class="day-text">
+        <div class="day-date">Saturday · 30 May 2026</div>
+        <div class="day-title">Tirana → Gjirokastër · Castle & Old Bazaar</div>
+      </div>
+      <div class="day-ghost">04</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">09:00 – 11:00</div>
+              <div class="tl-label">Bunk'Art 2 — Communist Bunker Museum</div>
+              <div class="tl-detail">Underground bunker turned museum of Sigurimi secret police history. Very unique. ~1.5 hrs.</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Ticket</span> ~€3 · Skanderbeg Square area</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-pray"></div>
+            <div class="tl-content">
+              <div class="tl-time">11:30</div>
+              <div class="tl-label">Namazgah Mosque (Grand Mosque of Tirana)</div>
+              <div class="tl-detail">Albania's largest mosque — completed 2024, striking modern architecture. Dhuhr prayer if timing aligns.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">~12:30</div>
+              <div class="tl-label">Bus: Tirana → Gjirokastër (~4.5 hrs)</div>
+              <div class="tl-detail">From Tirana South Bus Terminal. Stunning mountain scenery — Albanian Riviera views on the right.</div>
+              <div class="info purple">
+                <div class="info-row"><span class="ik">Cost</span> ~€5–8/person</div>
+                <div class="info-row"><span class="ik">Tip</span> Buy ticket morning of at terminal</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-arrive"></div>
+            <div class="tl-content">
+              <div class="tl-time">~17:00</div>
+              <div class="tl-label">Arrive Gjirokastër · Check in Hotel Bebej</div>
+              <div class="tl-detail">UNESCO stone city. Hotel Bebej is in the old bazaar below the castle — ask for a castle-view room.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">17:30 – 19:30</div>
+              <div class="tl-label">Gjirokastër Castle</div>
+              <div class="tl-detail">Ottoman fortress with panoramic mountain valley views. Military museum + US spy plane wreckage inside.</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Ticket</span> ~€5 adult · Closes ~20:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">20:00</div>
+              <div class="tl-label">Dinner — Val-Mar Restaurant</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Val-Mar Restaurant</span><span class="resto-halal">Halal · 11 mentions</span><span class="resto-stars">★ 4.4</span></div>
+                <div class="resto-meta">Albanian Traditional · Old Bazaar, Gjirokastër</div>
+                <div class="resto-picks"><strong>Order:</strong> Qofte (meatballs), Tavë kosi (lamb & yogurt), Mountain greens</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Val-Mar+Restaurant+Gjirokaster" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">🏛 Bunk'Art ~€3</span>
+      <span class="ds-pill">🚌 Bus ~€6</span>
+      <span class="ds-pill">🏰 Castle ~€5</span>
+      <span class="ds-pill">🌙 Hotel Bebej</span>
+    </div>
+  </div>
+
+  <!-- ─── DAY 5 ─── -->
+  <div class="day-card albania fade-up" id="d5">
+    <div class="day-header" onclick="toggle('d5')">
+      <div class="day-num-label">Day 05</div>
+      <div class="day-text">
+        <div class="day-date">Sunday · 31 May 2026</div>
+        <div class="day-title">Sunrise Castle · Berat · Back to Tirana</div>
+      </div>
+      <div class="day-ghost">05</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">05:30 – 07:00</div>
+              <div class="tl-label">Sunrise at Gjirokastër Castle</div>
+              <div class="tl-detail">Walk up at dawn — golden light on the stone city below. Best photo of the trip.</div>
+              <div class="info amber">
+                <div class="info-row"><span class="ik">Fajr</span> ~04:50 in late May — pray before heading up</div>
+                <div class="info-row"><span class="ik">Note</span> Gate may be closed — outer walls give the view</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">07:30</div>
+              <div class="tl-label">Breakfast + Bus: Gjirokastër → Berat (~3.5 hrs)</div>
+              <div class="tl-detail">May require change at Fier. Confirm schedule at hotel the night before.</div>
+              <div class="info purple">
+                <div class="info-row"><span class="ik">Cost</span> ~€4–6/person</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-arrive"></div>
+            <div class="tl-content">
+              <div class="tl-time">~11:30</div>
+              <div class="tl-label">Arrive Berat — "City of a Thousand Windows"</div>
+              <div class="tl-detail">UNESCO World Heritage Site. Ottoman architecture with stacked white houses on a hillside above the Osum River.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">12:00 – 14:30</div>
+              <div class="tl-label">Berat Castle (Kalaja) & Mangalem Quarter</div>
+              <div class="tl-detail">A living castle — people still reside inside. Mangalem is the Muslim quarter below with the famous stacked-window houses.</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Castle</span> ~€2 entry · Views of Osum River gorge</div>
+                <div class="info-row"><span class="ik">Tip</span> Steep in places — wear shoes with grip</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">14:30</div>
+              <div class="tl-label">Lunch — Rus Traditional Food</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Rus Traditional Food</span><span class="resto-halal">Halal · 118 mentions</span><span class="resto-stars">★ 4.6</span></div>
+                <div class="resto-meta">Albanian Traditional · Berat Old Town · Budget–Mid</div>
+                <div class="resto-picks"><strong>Order:</strong> Fergese (peppers, tomatoes, feta), Byrek (pastry), Grilled lamb</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Rus+Traditional+Food+Berat+Albania" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">~16:00</div>
+              <div class="tl-label">Bus: Berat → Tirana (~2.5 hrs)</div>
+              <div class="info purple">
+                <div class="info-row"><span class="ik">Cost</span> ~€4–5/person</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">19:30</div>
+              <div class="tl-label">Dinner — NUR Restaurant</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">NUR Restaurant</span><span class="resto-halal">Halal · 52 mentions</span><span class="resto-stars">★ 4.7</span></div>
+                <div class="resto-meta">Middle Eastern · Tirana · Mid-range</div>
+                <div class="resto-picks"><strong>Order:</strong> Mixed meze, Grilled meats, Lebanese-Albanian fusion</div>
+                <a class="resto-map" href="https://maps.google.com/?q=NUR+Restaurant+Tirana" target="_blank">↗ Google Maps</a>
+              </div>
+              <div class="tl-detail" style="margin-top:8px; font-size:0.75rem;">Alt: <strong>Capitol Restaurant</strong> (Kavaja St · ★4.3 · 102 halal mentions) — very reliable, large menu</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-rest"></div>
+            <div class="tl-content">
+              <div class="tl-time">21:00</div>
+              <div class="tl-label">Early Night — 04:15 Taxi Pickup Tomorrow</div>
+              <div class="info red">
+                <div class="info-row"><span class="ik">⚠ Book</span> Pre-book taxi tonight for <strong>04:15 pickup</strong></div>
+                <div class="info-row"><span class="ik">Cost</span> TIA taxi ~€20–25 · Ask hotel reception</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">🌅 Sunrise 05:30</span>
+      <span class="ds-pill">🚌 2 buses ~€10</span>
+      <span class="ds-pill">🏰 Berat UNESCO</span>
+      <span class="ds-pill">⚠ Book 04:15 taxi!</span>
+    </div>
+  </div>
+</section>
+
+<!-- ╔════════════════════════════════╗ -->
+<!-- ║  ATHENS PHASE 2                ║ -->
+<!-- ╚════════════════════════════════╝ -->
+<section class="phase-section" id="p-athens2">
+  <div class="phase-header fade-up">
+    <div>
+      <div class="phase-number">Phase Three</div>
+      <div class="phase-name athens">Athens</div>
+    </div>
+    <div class="phase-dates">1–3 Jun</div>
+  </div>
+
+  <!-- ─── DAY 6 ─── -->
+  <div class="day-card athens fade-up" id="d6">
+    <div class="day-header" onclick="toggle('d6')">
+      <div class="day-num-label">Day 06</div>
+      <div class="day-text">
+        <div class="day-date">Monday · 1 June 2026</div>
+        <div class="day-title">Tirana → Athens · Recovery · Piraeus</div>
+      </div>
+      <div class="day-ghost">06</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">04:15</div>
+              <div class="tl-label">Taxi to Tirana Airport (TIA)</div>
+              <div class="tl-detail">Pre-booked taxi · ~25 min to airport</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-arrive"></div>
+            <div class="tl-content">
+              <div class="tl-time">Early Morning</div>
+              <div class="tl-label">Fly Tirana → Athens</div>
+              <div class="flight-bar">
+                <div><div class="flight-iata">TIA</div><div class="flight-city">Tirana</div></div>
+                <div class="flight-line"><div class="flight-rule"></div><div class="flight-plane">✈</div><div class="flight-rule"></div></div>
+                <div><div class="flight-iata">ATH</div><div class="flight-city">Athens</div></div>
+                <div class="flight-info"><div class="flight-num">~1 HR</div><div class="flight-time">Confirm time when booking</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">~09:00</div>
+              <div class="tl-label">Collect Luggage at Bounce Monastiraki</div>
+              <div class="tl-detail">Metro from airport → Monastiraki · Pick up your bag · Check in to hotel</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-rest"></div>
+            <div class="tl-content">
+              <div class="tl-time">10:00 – 14:00</div>
+              <div class="tl-label">Rest — Early Flight Recovery</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">~15:00</div>
+              <div class="tl-label">Piraeus Lunch — Falafellas + Scout Ferry Terminal</div>
+              <div class="tl-detail">Metro Line 1 (Green) to Piraeus · Scout tomorrow's departure gate.</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Falafellas</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.6</span></div>
+                <div class="resto-meta">Falafel · Piraeus · Budget</div>
+                <div class="resto-picks"><strong>Order:</strong> Classic falafel wrap, Halloumi, Hummus</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Falafellas+Piraeus+Athens" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">19:30</div>
+              <div class="tl-label">Dinner — NaanStop</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">NaanStop</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.4</span></div>
+                <div class="resto-meta">Indian Street Food · Athens · Budget</div>
+                <div class="resto-picks"><strong>Order:</strong> Naan wraps, Chicken tikka box</div>
+                <a class="resto-map" href="https://maps.google.com/?q=NaanStop+Athens" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-rest"></div>
+            <div class="tl-content">
+              <div class="tl-time">Evening</div>
+              <div class="tl-label">Book Ferry for Tomorrow</div>
+              <div class="info amber">
+                <div class="info-row"><span class="ik">Book</span> ferryhopper.com · June = peak, book ahead tonight</div>
+                <div class="info-row"><span class="ik">Option A</span> Hydrofoil ~35 min · ~€9 each way</div>
+                <div class="info-row"><span class="ik">Option B</span> Regular ferry ~70 min · ~€7 each way</div>
+                <div class="info-row"><span class="ik">Departs</span> Early morning — check schedule when booking</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">✈ Early flight TIA→ATH</span>
+      <span class="ds-pill">🧳 Collect luggage</span>
+      <span class="ds-pill">⛴ Book ferry tonight</span>
+    </div>
+  </div>
+
+  <!-- ─── DAY 7 ─── -->
+  <div class="day-card athens fade-up" id="d7">
+    <div class="day-header" onclick="toggle('d7')">
+      <div class="day-num-label">Day 07</div>
+      <div class="day-text">
+        <div class="day-date">Tuesday · 2 June 2026</div>
+        <div class="day-title">Aegina Island · Sea Glass · Lycabettus Sunset</div>
+      </div>
+      <div class="day-ghost">07</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-ferry"></div>
+            <div class="tl-content">
+              <div class="tl-time">~07:00</div>
+              <div class="tl-label">Ferry: Piraeus → Aegina</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Gate</span> Piraeus Port · Gate E8/E9 area — check ticket</div>
+                <div class="info-row"><span class="ik">Metro</span> Line 1 (Green) to Piraeus · 10 min walk to port</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-arrive"></div>
+            <div class="tl-content">
+              <div class="tl-time">~08:30</div>
+              <div class="tl-label">Arrive Aegina Town</div>
+              <div class="tl-detail">Small port with fish tavernas. Hire a taxi or rent scooter/ATV to get around.</div>
+              <div class="info amber">
+                <div class="info-row"><span class="ik">Taxi</span> ~€5–8 to Kolona Beach</div>
+                <div class="info-row"><span class="ik">Scooter</span> ~€15–20/day for freedom to explore</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">09:30 – 13:00</div>
+              <div class="tl-label">Kolona Beach — Sea Glass Hunt + Swim</div>
+              <div class="tl-detail">Best sea glass candidate on Aegina — pebbly/rocky character, beachcombing mentioned in reviews, next to the ancient Temple of Apollo column.</div>
+              <div class="info teal">
+                <div class="info-row"><span class="ik">Sea Glass</span> Check rocky patches at water's edge · Morning low tide is best</div>
+                <div class="info-row"><span class="ik">Temple</span> Single remaining Apollo column right beside beach — free to view</div>
+                <div class="info-row"><span class="ik">Note</span> No confirmed reports in 1,000+ reviews scraped — manage expectations, but beach itself is beautiful</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">13:00</div>
+              <div class="tl-label">Lunch in Aegina Town</div>
+              <div class="info amber">
+                <div class="info-row"><span class="ik">Safe</span> Grilled fish, seafood pasta, Greek salad — no meat concern</div>
+                <div class="info-row"><span class="ik">Buy</span> Aegina pistachios — best in Greece, take some home</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-ferry"></div>
+            <div class="tl-content">
+              <div class="tl-time">~16:00</div>
+              <div class="tl-label">Ferry: Aegina → Piraeus</div>
+              <div class="tl-detail">Multiple sailings throughout the day — last boats ~21:00. No need to rush.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">18:00 – 19:30</div>
+              <div class="tl-label">Monastiraki — Final Souvenirs</div>
+              <div class="tl-detail">Last chance: olive oil, herbs, evil eye keychains, Greek coffee.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-see"></div>
+            <div class="tl-content">
+              <div class="tl-time">19:30 – 21:00</div>
+              <div class="tl-label">Lycabettus Hill — 360° Athens Panorama</div>
+              <div class="tl-detail">Best view in Athens — Acropolis, the sea, the whole city at dusk. Funicular or 30 min hike up.</div>
+              <div class="info blue">
+                <div class="info-row"><span class="ik">Funicular</span> ~€7 return · Runs until late</div>
+                <div class="info-row"><span class="ik">Sunset</span> ~20:40 in early June — perfect timing</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-eat"></div>
+            <div class="tl-content">
+              <div class="tl-time">21:30</div>
+              <div class="tl-label">Final Athens Dinner — Aladdin Restaurant</div>
+              <div class="resto">
+                <div class="resto-head"><span class="resto-name">Aladdin Restaurant</span><span class="resto-halal">Halal</span><span class="resto-stars">★ 4.3</span></div>
+                <div class="resto-meta">Middle Eastern / Turkish · Athens · Budget–Mid</div>
+                <div class="resto-picks"><strong>Order:</strong> Shawarma, Mixed grill, Baklava to finish</div>
+                <a class="resto-map" href="https://maps.google.com/?q=Aladdin+Delivery+Athens+Greece" target="_blank">↗ Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">⛴ Ferry ~€14–18 return</span>
+      <span class="ds-pill">🔍 Sea glass at Kolona</span>
+      <span class="ds-pill">🌅 Lycabettus sunset</span>
+      <span class="ds-pill">🌰 Buy pistachios!</span>
+    </div>
+  </div>
+
+  <!-- ─── DAY 8 ─── -->
+  <div class="day-card athens fade-up" id="d8">
+    <div class="day-header" onclick="toggle('d8')">
+      <div class="day-num-label">Day 08</div>
+      <div class="day-text">
+        <div class="day-date">Wednesday · 3 June 2026</div>
+        <div class="day-title">Fly Home — Athens → Abu Dhabi → KL</div>
+      </div>
+      <div class="day-ghost">08</div>
+      <div class="day-chevron">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot dot-rest"></div>
+            <div class="tl-content">
+              <div class="tl-time">Morning</div>
+              <div class="tl-label">Hotel Check-out</div>
+              <div class="tl-detail">Hotel may hold luggage until taxi time — ask reception.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-move"></div>
+            <div class="tl-content">
+              <div class="tl-time">TBD</div>
+              <div class="tl-label">Transfer to ATH Airport</div>
+              <div class="tl-detail">Metro Line 3 (Blue) from Monastiraki → Airport · ~40 min · €9/person · Allow 3 hrs for international</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot dot-arrive"></div>
+            <div class="tl-content">
+              <div class="tl-time">EY190</div>
+              <div class="tl-label">Fly Athens → Abu Dhabi → Kuala Lumpur</div>
+              <div class="flight-bar">
+                <div><div class="flight-iata">ATH</div><div class="flight-city">Athens</div></div>
+                <div class="flight-line"><div class="flight-rule"></div><div class="flight-plane">✈</div><div class="flight-rule"></div></div>
+                <div><div class="flight-iata">AUH</div><div class="flight-city">Abu Dhabi</div></div>
+                <div class="flight-line"><div class="flight-rule"></div><div class="flight-plane">✈</div><div class="flight-rule"></div></div>
+                <div><div class="flight-iata">KUL</div><div class="flight-city">Kuala Lumpur</div></div>
+                <div class="flight-info"><div class="flight-num">EY190</div><div class="flight-time">Etihad Airways</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="info teal" style="margin-top:16px;">
+          <strong>Trip complete.</strong> 8 days · 2 countries · 5 cities · 14+ halal meals · 1 island · 2 UNESCO sites · 1 Ottoman stone city
+        </div>
+      </div>
+    </div>
+    <div class="day-stats">
+      <span class="ds-pill">✈ EY190 ATH→AUH→KUL</span>
+      <span class="ds-pill">🏠 Welcome home</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ SUMMARY -->
+<section style="padding-top:52px;">
+  <div class="phase-header fade-up" style="border-bottom-color:var(--border);">
+    <div>
+      <div class="phase-number">Overview</div>
+      <div class="phase-name" style="color:var(--ink);">Trip Summary</div>
+    </div>
+  </div>
+
+  <div class="stats-row fade-up">
+    <div class="stat-item"><div class="stat-big">8</div><div class="stat-label">Days</div></div>
+    <div class="stat-item"><div class="stat-big">2</div><div class="stat-label">Countries</div></div>
+    <div class="stat-item"><div class="stat-big">5</div><div class="stat-label">Cities</div></div>
+    <div class="stat-item"><div class="stat-big">14+</div><div class="stat-label">Halal Meals</div></div>
+    <div class="stat-item"><div class="stat-big">4</div><div class="stat-label">Flights</div></div>
+    <div class="stat-item"><div class="stat-big">1</div><div class="stat-label">Island</div></div>
+  </div>
+
+  <div class="sec-label fade-up" style="margin-top:28px;">Estimated Costs per Person</div>
+  <div class="cost-table fade-up">
+    <div class="ct-row"><span>Metro (Airport ×2)</span><span class="ct-amt">€18</span></div>
+    <div class="ct-row"><span>Acropolis Museum</span><span class="ct-amt">€10</span></div>
+    <div class="ct-row"><span>Acropolis entry</span><span class="ct-amt">€20</span></div>
+    <div class="ct-row"><span>Bounce storage (split 2 pax)</span><span class="ct-amt">~€6.50</span></div>
+    <div class="ct-row"><span>Ferry Piraeus–Aegina return</span><span class="ct-amt">€14–18</span></div>
+    <div class="ct-row"><span>Lycabettus funicular return</span><span class="ct-amt">€7</span></div>
+    <div class="ct-row"><span>Albania buses (all legs)</span><span class="ct-amt">~€20</span></div>
+    <div class="ct-row"><span>Albania entries (Bunk'Art + 2 castles)</span><span class="ct-amt">~€10</span></div>
+    <div class="ct-row total"><span>Approx. in-trip cost (ex-flights, hotel, food)</span><span class="ct-amt">~€106–110</span></div>
+  </div>
+
+  <div class="sec-label fade-up" style="margin-top:28px;">Booking Checklist</div>
+  <div class="fade-up" style="background:var(--white); border:1px solid var(--border); border-radius:4px; padding:16px 20px;">
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Athens hotel — May 27–29 (near Monastiraki)</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Tirana hotel — May 29–30</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Hotel Bebej, Gjirokastër — May 30–31</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Tirana hotel — May 31</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Athens hotel — Jun 1–3</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Bounce luggage storage — bounce.com (pre-book)</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Acropolis Museum tickets — online</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Acropolis entry tickets — online (fills up same day)</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Ferry Piraeus–Aegina — ferryhopper.com</label>
+      <label class="check-item"><input type="checkbox" onchange="this.parentElement.classList.toggle('done',this.checked)"> Taxi TIA → 04:15 pickup Jun 1 (book May 31 night)</label>
+    </div>
+  </div>
+
+  <div class="sec-label fade-up" style="margin-top:28px;">All Restaurants at a Glance</div>
+  <div class="resto-list fade-up">
+    <div class="rl-item"><span class="rl-name">Yalla Yalla</span><span class="rl-meta">D1 Lunch · Monastiraki · €7–15</span></div>
+    <div class="rl-item"><span class="rl-name">Falafel Monastiraki</span><span class="rl-meta">D1 Dinner · Monastiraki · €5–10</span></div>
+    <div class="rl-item"><span class="rl-name">Indian Chef</span><span class="rl-meta">D2 Lunch · Syntagma · €10–18</span></div>
+    <div class="rl-item"><span class="rl-name">Namaste Indian</span><span class="rl-meta">D2 Dinner · Acropolis · €12–20</span></div>
+    <div class="rl-item"><span class="rl-name">Hayal Et</span><span class="rl-meta">D3 Dinner · Tirana · 117 halal mentions</span></div>
+    <div class="rl-item"><span class="rl-name">Val-Mar Restaurant</span><span class="rl-meta">D4 Dinner · Gjirokastër · 11 halal mentions</span></div>
+    <div class="rl-item"><span class="rl-name">Rus Traditional Food</span><span class="rl-meta">D5 Lunch · Berat · 118 halal mentions · ★4.6</span></div>
+    <div class="rl-item"><span class="rl-name">NUR / Capitol</span><span class="rl-meta">D5 Dinner · Tirana · 52 / 102 halal mentions</span></div>
+    <div class="rl-item"><span class="rl-name">Falafellas</span><span class="rl-meta">D6 Lunch · Piraeus · Budget</span></div>
+    <div class="rl-item"><span class="rl-name">NaanStop</span><span class="rl-meta">D6 Dinner · Athens · Budget</span></div>
+    <div class="rl-item"><span class="rl-name">Aladdin Restaurant</span><span class="rl-meta">D7 Final Dinner · Athens · Budget–Mid</span></div>
+  </div>
+</section>
+
+</main>
+
+</div><!-- /#v-iti -->
+
+<!-- ══════════════════════════════════ HALAL VIEW -->
+<div id="v-halal" style="display:none">
+
+<!-- Controls -->
+<div class="hcontrols">
+  <div class="hcontrols-inner">
+    <div class="filter-row">
+      <button class="ftab active" data-f="all" onclick="filter('all')">All</button>
+      <button class="ftab" data-f="athens" onclick="filter('athens')">Athens</button>
+      <button class="ftab" data-f="tirana" onclick="filter('tirana')">Tirana</button>
+      <button class="ftab" data-f="gjiro" onclick="filter('gjiro')">Gjirokastër</button>
+      <button class="ftab" data-f="berat" onclick="filter('berat')">Berat</button>
+      <button class="ftab" data-f="itinerary" onclick="filter('itinerary')">⭐ In Itinerary</button>
+    </div>
+    <div class="search-row">
+      <input class="search-input" type="text" placeholder="Search by name or cuisine…" oninput="search(this.value)" id="searchInput">
+      <span class="count-label" id="countLabel">33 restaurants</span>
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
+<main class="hmain" id="hMainContent">
+
+  <!-- ══ ATHENS ══ -->
+  <section class="city-section fade-up" id="sec-athens" data-city="athens">
+    <div class="city-header">
+      <div><div class="city-label athens">Athens</div><div class="city-sub">Greece · May 27–29 + Jun 1–3</div></div>
+      <div class="city-count" id="athens-count">19 restaurants</div>
+    </div>
+    <div id="athens-list">
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="yalla yalla" data-cuisine="lebanese middle eastern">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">YALLA YALLA Athens</span><span class="tag tag-halal">Halal confirmed</span><span class="tag tag-itinerary">⭐ D1 Lunch</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Lebanese</span><span class="meta-sep">·</span><span class="rest-location">Monastiraki</span><span class="meta-sep">·</span><span class="rest-evidence">Evidence from reviews</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(1,565 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/YALLA+YALLA+Athens/@37.9790541,23.7253565,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="falafel monastiraki" data-cuisine="falafel arab">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Falafel Monastiraki</span><span class="tag tag-halal">Halal Certified 📜</span><span class="tag tag-itinerary">⭐ D1 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Arab / Falafel</span><span class="meta-sep">·</span><span class="rest-location">Monastiraki</span><span class="meta-sep">·</span><span class="rest-evidence">Certificate displayed in-store</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(434 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Falafel+Monastiraki/@37.9768255,23.7235226,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="not just falafel" data-cuisine="falafel mediterranean">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Not Just Falafel</span><span class="tag tag-halal">No pork confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Falafel / Mediterranean</span><span class="meta-sep">·</span><span class="rest-location">Near Syntagma</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.6</span><span class="review-ct">(1,739 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Not+Just+Falafel/@37.9767226,23.7301496,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="falafellas athens" data-cuisine="falafel plant-based">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Falafellas (Athens)</span><span class="tag tag-halal">Plant-based ✿</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Falafel / Plant-based</span><span class="meta-sep">·</span><span class="rest-location">Near Omonia</span><span class="meta-sep">·</span><span class="rest-evidence">100% meat-free, no alcohol</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.7</span><span class="review-ct">(5,532 reviews)</span><span class="price-tag price-budget">€1–5</span></div>
+          <div class="rest-warn">⚠ Closed Mon &amp; Sun — open Tue–Sat</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Falafellas+(Athens)/@37.9784239,23.7279188,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="pak taka tak" data-cuisine="pakistani">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Pak Taka Tak Restaurant</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Pakistani</span><span class="meta-sep">·</span><span class="rest-location">Psyrri</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.4</span><span class="review-ct">(602 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Pak+Taka+Tak+Restaurant/@37.9811886,23.7246604,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="zanoubia" data-cuisine="syrian fast food">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Zanoubia</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Syrian / Fast Food</span><span class="meta-sep">·</span><span class="rest-location">Psyrri</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.3</span><span class="review-ct">(1,064 reviews)</span><span class="price-tag price-budget">€1–5</span></div>
+          <div class="rest-warn">🌙 Open until 2 AM — great for late nights</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Zanoubia/@37.9874262,23.7262192,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="sara kurdish" data-cuisine="kurdish middle eastern">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Sara Kurdish Restaurant (Halal)</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Kurdish / Middle Eastern</span><span class="meta-sep">·</span><span class="rest-location">Near Omonia</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.4</span><span class="review-ct">(794 reviews)</span><span class="price-tag price-mid">€10–15</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Sara+KURDISH+Restaurant+(Halal)/@37.9842108,23.7225958,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="punjabi tikka" data-cuisine="pakistani indian">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Punjabi Tikka Restaurant</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Pakistani / Indian</span><span class="meta-sep">·</span><span class="rest-location">Near Omonia</span><span class="meta-sep">·</span><span class="rest-evidence">9 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.3</span><span class="review-ct">(631 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Punjabi+tikka+restaurant/@37.9841078,23.7238578,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="halal big brother" data-cuisine="syrian egyptian">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">HALAL Big Brother</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Syrian / Egyptian</span><span class="meta-sep">·</span><span class="rest-location">North of Omonia</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.0</span><span class="review-ct">(460 reviews)</span><span class="price-tag price-budget">€1–5</span></div>
+          <div class="rest-warn">⚠ Closed Wednesday</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/HALAL+Big+Brother/@38.007433,23.7298668,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="green kebab" data-cuisine="turkish halal">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Green Kebab</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Turkish</span><span class="meta-sep">·</span><span class="rest-location">Exarchia / Victoria</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.6</span><span class="review-ct">(1,393 reviews)</span><span class="price-tag price-mid">€10–15</span></div>
+          <div class="rest-warn">⚠ Closed Tuesday</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Green+Kebab/@37.9919754,23.7251393,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="naanstop indian" data-cuisine="indian halal">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">NaanStop Indian Cuisine</span><span class="tag tag-halal">Halal confirmed</span><span class="tag tag-itinerary">⭐ D6 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Indian</span><span class="meta-sep">·</span><span class="rest-location">Leoforos Alexandras</span><span class="meta-sep">·</span><span class="rest-evidence">12 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.7</span><span class="review-ct">(1,248 reviews)</span><span class="price-tag price-mid">€15–20</span></div>
+          <div class="rest-warn">⚠ Closed Monday</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/NaanStop+Indian+Cuisine/@37.9868898,23.7604682,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="indian chef restaurant" data-cuisine="indian pakistani">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Indian Chef Restaurant</span><span class="tag tag-halal">Halal confirmed</span><span class="tag tag-itinerary">⭐ D2 Lunch</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Indian / Pakistani</span><span class="meta-sep">·</span><span class="rest-location">Syngrou Ave</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.4</span><span class="review-ct">(2,655 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Indian+Chef+Restaurant/@37.9626259,23.7245132,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="namaste indian restaurant" data-cuisine="indian">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Namaste Indian Restaurant</span><span class="tag tag-halal">Halal confirmed</span><span class="tag tag-itinerary">⭐ D2 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Indian</span><span class="meta-sep">·</span><span class="rest-location">Near Syngrou</span><span class="meta-sep">·</span><span class="rest-evidence">35 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.6</span><span class="review-ct">(1,928 reviews)</span><span class="price-tag price-mid">€10–15</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Namaste+Indian+Restaurant/@37.9677102,23.7299335,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="cappadocia grill" data-cuisine="turkish halal">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Cappadocia Grill &amp; Anatolian Cuisine</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Turkish / Halal</span><span class="meta-sep">·</span><span class="rest-location">Kallithea</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.7</span><span class="review-ct">(1,968 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Cappadocia+Grill+%26+Anatolian+Cuisine/@37.9623917,23.7137969,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="bereket restaurant" data-cuisine="turkish barbecue">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">BEREKET RESTAURANT</span><span class="tag tag-halal">Zabiha Halal</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Turkish BBQ</span><span class="meta-sep">·</span><span class="rest-location">Nea Smirni</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.4</span><span class="review-ct">(834 reviews)</span><span class="price-tag price-mid">€10–15</span></div>
+          <div class="rest-warn">⚠ Closed Monday</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/BEREKET+RESTAURANT/@37.9350096,23.7115698,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="kammoun lebanese" data-cuisine="lebanese street food">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Kammoun Lebanese Street Food</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Lebanese</span><span class="meta-sep">·</span><span class="rest-location">Glyfada (Coastal)</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">5.0</span><span class="review-ct">(2,930 reviews)</span><span class="price-tag price-mid">€10–15</span></div>
+          <div class="rest-warn">⚠ Closed Fri/Sat/Sun — open Mon–Thu only · Tram T3 from Syntagma</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Kammoun+Lebanese+Street+Food/@37.8791148,23.7633061,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-name="darbari restaurant" data-cuisine="persian bar grill">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Darbari Restaurant</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Persian / Bar &amp; Grill</span><span class="meta-sep">·</span><span class="rest-location">Alimos (Coastal)</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.8</span><span class="review-ct">(524 reviews)</span><span class="price-tag price-higher">€20–25</span></div>
+          <div class="rest-warn">⚠ Only open Tue–Thu, dinner only (5–11 PM)</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Darbari+Restaurant/@37.9254762,23.7407531,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="aladdin" data-cuisine="middle eastern turkish">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Aladdin</span><span class="tag tag-halal">Halal confirmed</span><span class="tag tag-itinerary">⭐ D7 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Middle Eastern / Turkish</span><span class="meta-sep">·</span><span class="rest-location">Paleo Faliro (Coastal)</span><span class="meta-sep">·</span><span class="rest-evidence">32 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.4</span><span class="review-ct">(9,409 reviews)</span><span class="price-tag price-budget">€5–10</span></div>
+          <div class="rest-warn">🚊 Tram T3 from Syntagma → Paleo Faliro stop (~35 min)</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Aladdin/@37.9297761,23.7025419,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="athens" data-itinerary="true" data-name="falafellas piraeus" data-cuisine="falafel plant-based">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Falafellas (Piraeus)</span><span class="tag tag-halal">Plant-based ✿</span><span class="tag tag-itinerary">⭐ D6 Lunch</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Falafel / Plant-based</span><span class="meta-sep">·</span><span class="rest-location">Piraeus</span><span class="meta-sep">·</span><span class="rest-evidence">100% meat-free, no alcohol</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(231 reviews)</span><span class="price-tag price-budget">€1–5</span></div>
+          <div class="rest-warn">⚠ Closed Fri/Sat/Sun/Mon — open Tue–Thu only</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn athens-btn" href="https://www.google.com/maps/place/Falafellas+(Piraeus)/@37.9409511,23.6463375,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+    </div><!-- /athens-list -->
+  </section>
+
+  <!-- ══ ALBANIA NOTE ══ -->
+  <div class="albania-note fade-up" id="albania-note">
+    <strong>Albania context:</strong> ~57% Muslim country — most restaurants use halal meat by default. The ones below are <strong>explicitly confirmed halal</strong> via Google review scraping.
+  </div>
+  <div class="avoid-box fade-up" id="albania-avoid">
+    <strong>⚠ Avoid:</strong> "Era Vila" (pork on menu despite halal claim) · "Zgara Supreme 2" (pork chops on menu) · Always confirm at time of visit.
+  </div>
+
+  <!-- ══ TIRANA ══ -->
+  <section class="city-section fade-up" id="sec-tirana" data-city="tirana">
+    <div class="city-header">
+      <div><div class="city-label tirana">Tirana</div><div class="city-sub">Albania · May 29–31</div></div>
+      <div class="city-count" id="tirana-count">7 restaurants</div>
+    </div>
+    <div id="tirana-list">
+
+      <div class="rest-row" data-city="tirana" data-itinerary="true" data-name="hayal et" data-cuisine="turkish grill">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Hayal Et</span><span class="tag tag-halal">★ Top Halal Pick</span><span class="tag tag-itinerary">⭐ D3 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Turkish Halal Grill</span><span class="meta-sep">·</span><span class="rest-location">Blloku</span><span class="meta-sep">·</span><span class="rest-evidence">117 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(7,819 reviews)</span><span class="price-tag price-mid">Moderate</span></div>
+          <div class="rest-warn">ℹ Opens at 2 PM on Fridays (Juma prayer)</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/Hayal+Et/@41.313913,19.8155836,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="tirana" data-itinerary="true" data-name="capitol kavaja" data-cuisine="doner fast food">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Capitol Meat &amp; Chicken (Kavaja St)</span><span class="tag tag-halal">Halal confirmed</span><span class="tag tag-itinerary">⭐ D5 Dinner option</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Doner / Fast Food</span><span class="meta-sep">·</span><span class="rest-location">Kavaja St, city centre</span><span class="meta-sep">·</span><span class="rest-evidence">102 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.6</span><span class="review-ct">(2,228 reviews)</span><span class="price-tag price-budget">Budget (ALL 500–1,000)</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/Capitol+Meat+%26+Chicken/@41.3280721,19.815719,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="tirana" data-name="capitol dibres" data-cuisine="doner fast food">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Capitol Meat &amp; Chicken (Dibrës Branch)</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Doner / Fast Food</span><span class="meta-sep">·</span><span class="rest-location">Rruga e Dibrës, north</span><span class="meta-sep">·</span><span class="rest-evidence">44 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(1,711 reviews)</span><span class="price-tag price-budget">Budget (ALL 500–1,000)</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/Capitol+meat+%26+chicken/@41.3403436,19.8291947,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="tirana" data-name="lezet" data-cuisine="turkish albanian">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Lezet</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Turkish / Albanian</span><span class="meta-sep">·</span><span class="rest-location">Near Skanderbeg Square</span><span class="meta-sep">·</span><span class="rest-evidence">14 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.5</span><span class="review-ct">(1,834 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+          <div class="rest-warn">🌅 Opens 7 AM — good for breakfast</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/Lezet/@41.3257784,19.8223759,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="tirana" data-itinerary="true" data-name="nur restaurant" data-cuisine="mediterranean middle eastern">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">NUR RESTAURANT</span><span class="tag tag-halal">Halal + No Alcohol</span><span class="tag tag-itinerary">⭐ D5 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Mediterranean / Middle Eastern</span><span class="meta-sep">·</span><span class="rest-location">Near Skanderbeg, north-east</span><span class="meta-sep">·</span><span class="rest-evidence">52 halal · 11 no-alcohol mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.3</span><span class="review-ct">(1,574 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/NUR+RESTAURANT/@41.3301404,19.8246922,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="tirana" data-name="restorant tymi" data-cuisine="albanian grill">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Restorant Tymi</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian Grill</span><span class="meta-sep">·</span><span class="rest-location">Kavaja St, west</span><span class="meta-sep">·</span><span class="rest-evidence">12 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.7</span><span class="review-ct">(3,932 reviews)</span><span class="price-tag price-mid">Mid (ALL 1,000–1,500)</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/Restorant+Tymi/@41.3286013,19.8125759,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="tirana" data-name="bosphorus restaurant" data-cuisine="turkish">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Bosphorus Restaurant</span><span class="tag tag-halal">Halal confirmed</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Turkish</span><span class="meta-sep">·</span><span class="rest-location">Near Namazgah Mosque</span><span class="meta-sep">·</span><span class="rest-evidence">7 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★</span><span class="rating-n">4.2</span><span class="review-ct">(397 reviews)</span><span class="price-tag price-mid">Mid</span></div>
+          <div class="rest-warn">ℹ Convenient if visiting Namazgah Mosque on Day 4</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn tirana-btn" href="https://www.google.com/maps/place/Bosphorus+Restaurant/@41.3255115,19.8247224,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ GJIROKASTËR ══ -->
+  <section class="city-section fade-up" id="sec-gjiro" data-city="gjiro">
+    <div class="city-header">
+      <div><div class="city-label gjiro">Gjirokastër</div><div class="city-sub">Albania · May 30–31 · UNESCO Stone City</div></div>
+      <div class="city-count" id="gjiro-count">2 restaurants</div>
+    </div>
+    <div id="gjiro-list">
+
+      <div class="rest-row" data-city="gjiro" data-itinerary="true" data-name="val-mar halal restaurant" data-cuisine="albanian traditional">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Halal Restaurant Val-Mar</span><span class="tag tag-halal">★ Named Halal Restaurant</span><span class="tag tag-itinerary">⭐ D4 Dinner</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian Traditional</span><span class="meta-sep">·</span><span class="rest-location">Old Bazaar, near Hotel Bebej</span><span class="meta-sep">·</span><span class="rest-evidence">11 halal mentions · "Halal" sign on door</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.8</span><span class="review-ct">(32 reviews)</span><span class="price-tag price-budget">Budget (ALL 500–1,000)</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn gjiro-btn" href="https://www.google.com/maps/place/Halal+Restaurant+Val-Mar/@40.0746595,20.1388511,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="gjiro" data-name="rejan pizza halal" data-cuisine="pizza fast food">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Rejan Pizza's Halal</span><span class="tag tag-halal">Named Halal + No Alcohol</span><span class="tag tag-24hr">Open 24 hrs 🌙</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Pizza / Fast Food</span><span class="meta-sep">·</span><span class="rest-location">Old Bazaar, 30 sec from Val-Mar</span><span class="meta-sep">·</span><span class="rest-evidence">9 halal mentions · No alcohol</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.5</span><span class="review-ct">(51 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+          <div class="rest-warn">✓ Perfect for early breakfast before sunrise castle walk</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn gjiro-btn" href="https://www.google.com/maps/place/Rejan+Pizza%27s+Halal/@40.074309,20.1382974,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ BERAT ══ -->
+  <section class="city-section fade-up" id="sec-berat" data-city="berat">
+    <div class="city-header">
+      <div><div class="city-label berat">Berat</div><div class="city-sub">Albania · May 31 · City of a Thousand Windows</div></div>
+      <div class="city-count" id="berat-count">5 restaurants</div>
+    </div>
+    <div id="berat-list">
+
+      <div class="rest-row" data-city="berat" data-itinerary="true" data-name="rus traditional food" data-cuisine="albanian traditional">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Rus Traditional Food Berat (Halal)</span><span class="tag tag-halal">★ Named Halal + Top Rated</span><span class="tag tag-itinerary">⭐ D5 Lunch</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian Traditional</span><span class="meta-sep">·</span><span class="rest-location">Mangalem quarter</span><span class="meta-sep">·</span><span class="rest-evidence">118 halal mentions · 14 muslim mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(3,446 reviews)</span><span class="price-tag price-budget">Budget (ALL 500–1,000)</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn berat-btn" href="https://www.google.com/maps/place/Rus+Traditional+Food+Berat+(Halal)/@40.7044237,19.9549372,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="berat" data-name="wildor cheftoska" data-cuisine="albanian traditional">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Restaurant WilDor &amp; ChefToska (Halal Food)</span><span class="tag tag-halal">Named Halal Food</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian Traditional</span><span class="meta-sep">·</span><span class="rest-location">Mangalem, near Antipatrea gate</span><span class="meta-sep">·</span><span class="rest-evidence">43 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.5</span><span class="review-ct">(740 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+        </div>
+        <div class="rest-actions"><a class="map-btn berat-btn" href="https://www.google.com/maps/place/Restaurant+WilDor+%26ChefToska/@40.7044866,19.9496239,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="berat" data-name="eni traditional food" data-cuisine="albanian traditional">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Eni Traditional Food Berat</span><span class="tag tag-halal">Halal options available</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian Traditional</span><span class="meta-sep">·</span><span class="rest-location">Berat old town (Gorica)</span><span class="meta-sep">·</span><span class="rest-evidence">4 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(4,935 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+          <div class="rest-warn">⚠ Ask staff to confirm which dishes are halal</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn berat-btn" href="https://www.google.com/maps/place/Eni+Traditional+Food+Berat/@40.7022771,19.943989,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="berat" data-name="temi albanian food" data-cuisine="albanian traditional">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">Temi Albanian Food</span><span class="tag tag-halal">Halal options</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian Traditional</span><span class="meta-sep">·</span><span class="rest-location">Berat old town</span><span class="meta-sep">·</span><span class="rest-evidence">3 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★★</span><span class="rating-n">4.9</span><span class="review-ct">(1,587 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+          <div class="rest-warn">⚠ Split hours: 12–4 PM + 6–10:30 PM · Ask for halal dishes specifically</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn berat-btn" href="https://www.google.com/maps/place/Temi+Albanian+Food/@40.708703,19.9459613,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+      <div class="rest-row" data-city="berat" data-name="white city bar restaurant" data-cuisine="albanian grill">
+        <div class="rest-main">
+          <div class="rest-name-row"><span class="rest-name">White City Bar &amp; Restaurant</span><span class="tag tag-halal">Halal options</span></div>
+          <div class="rest-meta"><span class="rest-cuisine">Albanian / Grill</span><span class="meta-sep">·</span><span class="rest-location">Mangalem, Rruga Antipatrea</span><span class="meta-sep">·</span><span class="rest-evidence">3 halal mentions</span></div>
+          <div class="rest-stars-row"><span class="stars">★★★★½</span><span class="rating-n">4.7</span><span class="review-ct">(298 reviews)</span><span class="price-tag price-budget">Budget</span></div>
+          <div class="rest-warn">⚠ Has "Bar" in name — confirm no alcohol with your food</div>
+        </div>
+        <div class="rest-actions"><a class="map-btn berat-btn" href="https://www.google.com/maps/place/White+City+Bar+%26+Restaurant/@40.7040765,19.9532547,17z" target="_blank">↗ Maps</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="empty" id="emptyMsg" style="display:none;">No restaurants match your search.</div>
+
+</main>
+
+</div><!-- /#v-halal -->
+
+<footer class="footer">Athens · Albania · May–Jun 2026 · Afham & Alya</footer>
+
+<script>
+// ── VIEW SWITCH ──
+function switchView(view) {
+  document.getElementById('v-iti').style.display   = view === 'iti'   ? '' : 'none';
+  document.getElementById('v-halal').style.display = view === 'halal' ? '' : 'none';
+  document.querySelectorAll('.mn-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (view === 'halal') {
+    currentFilter = 'all';
+    document.querySelectorAll('.ftab').forEach(t => t.classList.toggle('active', t.dataset.f === 'all'));
+    if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
+    currentSearch = '';
+    render();
+    setTimeout(() => {
+      document.querySelectorAll('#v-halal .fade-up').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight + 50) el.classList.add('visible');
+      });
+    }, 80);
+  }
+}
+
+// ── HALAL FILTER / SEARCH ──
+let currentFilter = 'all';
+let currentSearch = '';
+
+function filter(f) {
+  currentFilter = f;
+  currentSearch = '';
+  if (document.getElementById('searchInput')) document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.ftab').forEach(t => t.classList.toggle('active', t.dataset.f === f));
+  render();
+}
+
+function search(val) {
+  currentSearch = val.toLowerCase().trim();
+  render();
+}
+
+function render() {
+  const rows = document.querySelectorAll('#v-halal .rest-row');
+  const sections = document.querySelectorAll('#v-halal .city-section');
+  const albaniaNote  = document.getElementById('albania-note');
+  const albaniaAvoid = document.getElementById('albania-avoid');
+  let totalVisible = 0;
+
+  rows.forEach(row => {
+    const city = row.dataset.city;
+    const isItinerary = row.dataset.itinerary === 'true';
+    const searchText = (row.dataset.name + ' ' + row.dataset.cuisine).toLowerCase();
+    let show = true;
+    if (currentFilter === 'athens'    && city !== 'athens') show = false;
+    if (currentFilter === 'tirana'    && city !== 'tirana') show = false;
+    if (currentFilter === 'gjiro'     && city !== 'gjiro')  show = false;
+    if (currentFilter === 'berat'     && city !== 'berat')  show = false;
+    if (currentFilter === 'itinerary' && !isItinerary)      show = false;
+    if (currentSearch && !searchText.includes(currentSearch)) show = false;
+    row.style.display = show ? '' : 'none';
+    if (show) totalVisible++;
+  });
+
+  sections.forEach(sec => {
+    const visible = [...sec.querySelectorAll('.rest-row')].filter(r => r.style.display !== 'none');
+    sec.style.display = visible.length ? '' : 'none';
+    const countEl = sec.querySelector('[id$="-count"]');
+    if (countEl) countEl.textContent = visible.length + ' restaurant' + (visible.length !== 1 ? 's' : '');
+  });
+
+  const showAlbania = ['all','tirana','gjiro','berat','itinerary'].includes(currentFilter) && currentFilter !== 'athens';
+  if (albaniaNote)  albaniaNote.style.display  = showAlbania ? '' : 'none';
+  if (albaniaAvoid) albaniaAvoid.style.display = showAlbania ? '' : 'none';
+
+  const emptyMsg = document.getElementById('emptyMsg');
+  if (emptyMsg) emptyMsg.style.display = totalVisible === 0 ? '' : 'none';
+  const countLabel = document.getElementById('countLabel');
+  if (countLabel) countLabel.textContent = totalVisible + ' restaurant' + (totalVisible !== 1 ? 's' : '');
+}
+
+// ── CARD TOGGLE ──
+function toggle(id) {
+  const card = document.getElementById(id);
+  const body = card.querySelector('.day-body');
+  const isOpen = card.classList.contains('open');
+
+  if (isOpen) {
+    body.style.height = body.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => { body.style.height = '0px'; });
+    });
+    card.classList.remove('open');
+  } else {
+    card.classList.add('open');
+    body.style.height = body.scrollHeight + 'px';
+    body.addEventListener('transitionend', () => {
+      if (card.classList.contains('open')) body.style.height = 'auto';
+    }, { once: true });
+
+    // stagger timeline items
+    setTimeout(() => {
+      card.querySelectorAll('.tl-item').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 60);
+      });
+    }, 50);
+  }
+}
+
+// ── SCROLL REVEAL ──
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// ── PHASE NAV ACTIVE STATE ──
+const sections = [
+  { id: 'p-athens1', tab: 0 },
+  { id: 'p-albania',  tab: 1 },
+  { id: 'p-athens2',  tab: 2 },
+];
+const tabs = document.querySelectorAll('.phase-tab');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const s = sections.find(x => x.id === e.target.id);
+      if (s) tabs.forEach((t, i) => t.classList.toggle('active', i === s.tab));
+    }
+  });
+}, { rootMargin: '-30% 0px -65% 0px' });
+
+sections.forEach(s => {
+  const el = document.getElementById(s.id);
+  if (el) navObserver.observe(el);
+});
+
+// ── SCROLL TO PHASE ──
+function scrollPhase(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
