@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Receipt · Athens + Albania 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #111008;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px 64px;
+  font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+}
+
+/* ── RECEIPT WRAPPER ── */
+.receipt {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.8));
+}
+
+/* ── TORN EDGES ── */
+.tear {
+  width: 100%;
+  height: 18px;
+  background: #faf8f2;
+}
+.tear-top {
+  clip-path: polygon(
+    0% 100%, 2.5% 0%, 5% 100%, 7.5% 0%, 10% 100%, 12.5% 0%,
+    15% 100%, 17.5% 0%, 20% 100%, 22.5% 0%, 25% 100%, 27.5% 0%,
+    30% 100%, 32.5% 0%, 35% 100%, 37.5% 0%, 40% 100%, 42.5% 0%,
+    45% 100%, 47.5% 0%, 50% 100%, 52.5% 0%, 55% 100%, 57.5% 0%,
+    60% 100%, 62.5% 0%, 65% 100%, 67.5% 0%, 70% 100%, 72.5% 0%,
+    75% 100%, 77.5% 0%, 80% 100%, 82.5% 0%, 85% 100%, 87.5% 0%,
+    90% 100%, 92.5% 0%, 95% 100%, 97.5% 0%, 100% 100%
+  );
+}
+.tear-bottom {
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 100%, 97.5% 0%, 95% 100%, 92.5% 0%, 90% 100%, 87.5% 0%,
+    85% 100%, 82.5% 0%, 80% 100%, 77.5% 0%, 75% 100%, 72.5% 0%,
+    70% 100%, 67.5% 0%, 65% 100%, 62.5% 0%, 60% 100%, 57.5% 0%,
+    55% 100%, 52.5% 0%, 50% 100%, 47.5% 0%, 45% 100%, 42.5% 0%,
+    40% 100%, 37.5% 0%, 35% 100%, 32.5% 0%, 30% 100%, 27.5% 0%,
+    25% 100%, 22.5% 0%, 20% 100%, 17.5% 0%, 15% 100%, 12.5% 0%,
+    10% 100%, 7.5% 0%, 5% 100%, 2.5% 0%, 0% 100%
+  );
+}
+
+/* ── BODY ── */
+.body {
+  background: #faf8f2;
+  padding: 0 24px 28px;
+  color: #0f0e0a;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+  padding: 20px 0 14px;
+  border-bottom: 2px solid #0f0e0a;
+}
+.shop-name {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+}
+.trip-title {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 6px 0 2px;
+  line-height: 1.2;
+}
+.trip-sub {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #555;
+}
+.ref-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #666;
+}
+
+/* ── META TABLE ── */
+.meta {
+  border-top: 1px dashed #aaa;
+  border-bottom: 1px dashed #aaa;
+  padding: 8px 0;
+  margin: 10px 0;
+}
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+  font-size: 11px;
+}
+.meta-label { color: #666; }
+.meta-val { font-weight: bold; }
+
+/* ── DIVIDERS ── */
+.div-dash {
+  border: none;
+  border-top: 1px dashed #bbb;
+  margin: 9px 0;
+}
+.div-solid {
+  border: none;
+  border-top: 2px solid #0f0e0a;
+  margin: 12px 0;
+}
+.div-double {
+  border: none;
+  border-top: 3px double #0f0e0a;
+  margin: 12px 0;
+}
+
+/* ── DAY HEADER ── */
+.day-head {
+  background: #0f0e0a;
+  color: #faf8f2;
+  margin: 14px -24px 10px;
+  padding: 5px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10.5px;
+  letter-spacing: 1px;
+}
+.day-num { font-size: 13px; font-weight: bold; }
+.day-city { letter-spacing: 2px; text-transform: uppercase; }
+
+/* ── TIMELINE ROWS ── */
+.tl { margin: 3px 0; display: flex; gap: 8px; font-size: 11px; }
+.tl-t {
+  min-width: 46px;
+  color: #666;
+  flex-shrink: 0;
+  font-size: 10.5px;
+}
+.tl-l { flex: 1; }
+.tl-v {
+  text-align: right;
+  white-space: nowrap;
+  color: #333;
+  font-size: 10.5px;
+}
+
+/* dots fill */
+.dots-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 2px 0;
+  font-size: 11px;
+}
+.dot-label { flex-shrink: 0; }
+.dot-fill {
+  flex: 1;
+  border-bottom: 1px dotted #aaa;
+  margin: 0 4px;
+  margin-bottom: 3px;
+  min-width: 12px;
+}
+.dot-val { flex-shrink: 0; }
+
+/* ── BADGES ── */
+.halal {
+  display: inline-block;
+  background: #0f0e0a;
+  color: #faf8f2;
+  font-size: 8.5px;
+  padding: 1px 5px;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+.booked {
+  display: inline-block;
+  border: 1px solid #0f0e0a;
+  font-size: 8.5px;
+  padding: 1px 5px;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+.warn {
+  display: inline-block;
+  background: #555;
+  color: #faf8f2;
+  font-size: 8.5px;
+  padding: 1px 5px;
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-size: 9.5px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #888;
+  text-align: center;
+  margin: 10px 0 6px;
+}
+
+/* ── SUMMARY BOX ── */
+.sum-box {
+  border: 1.5px solid #0f0e0a;
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+.sum-title {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #555;
+}
+.sum-total {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #aaa;
+}
+
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 10px 0;
+}
+.stat-item {
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  text-align: center;
+}
+.stat-n { font-size: 18px; font-weight: bold; }
+.stat-l { font-size: 9px; letter-spacing: 1px; color: #666; text-transform: uppercase; }
+
+/* ── BARCODE ── */
+.barcode-wrap {
+  text-align: center;
+  margin: 16px 0 6px;
+}
+.barcode {
+  display: inline-flex;
+  gap: 0;
+  height: 44px;
+  align-items: flex-end;
+}
+.b { background: #0f0e0a; display: inline-block; height: 100%; }
+.barcode-num {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 10px 0 4px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #555;
+  border-top: 1px dashed #bbb;
+  margin-top: 12px;
+}
+.footer-main {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #0f0e0a;
+  margin-bottom: 3px;
+}
+
+/* ── INDENT ── */
+.indent { padding-left: 54px; }
+.indent-sm { padding-left: 14px; }
+.mt2 { margin-top: 4px; }
+.dim { color: #888; font-size: 10.5px; }
+.bold { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="receipt">
+  <div class="tear tear-top"></div>
+
+  <div class="body">
+
+    <!-- ── HEADER ── -->
+    <div class="header">
+      <div class="shop-name">✦ Jalan Jalan Travel Co. ✦</div>
+      <div class="trip-title">ATHENS<br>ALBANIA</div>
+      <div class="trip-sub">MEI — JUN 2026</div>
+      <div class="ref-row">
+        <span>NO: ATH-ALB-2026</span>
+        <span>2 PAX</span>
+        <span>8 HARI</span>
+      </div>
+    </div>
+
+    <!-- ── META ── -->
+    <div class="meta">
+      <div class="meta-row"><span class="meta-label">PAKEJ</span><span class="meta-val">ATHENS + ALBANIA</span></div>
+      <div class="meta-row"><span class="meta-label">TARIKH</span><span class="meta-val">27 MEI – 03 JUN 2026</span></div>
+      <div class="meta-row"><span class="meta-label">PAX</span><span class="meta-val">AFHAM + ALYA</span></div>
+      <div class="meta-row"><span class="meta-label">PEMAKANAN</span><span class="meta-val">HALAL SEPENUHNYA ✓</span></div>
+      <div class="meta-row"><span class="meta-label">LALUAN</span><span class="meta-val">KUL→ATH→TIA→ATH→KUL</span></div>
+    </div>
+
+    <!-- ── FLIGHTS ── -->
+    <div class="sec-label">— Penerbangan —</div>
+    <div class="tl">
+      <span class="tl-t">26 MEI</span>
+      <span class="tl-l">✈ KUL → ATH (via Abu Dhabi)</span>
+    </div>
+    <div class="tl">
+      <span class="tl-t">29 MEI</span>
+      <span class="tl-l">✈ ATH → TIA · 16:00 · ~1 jam</span>
+    </div>
+    <div class="tl">
+      <span class="tl-t">01 JUN</span>
+      <span class="tl-l">✈ TIA → ATH · awal pagi</span>
+    </div>
+    <div class="tl">
+      <span class="tl-t">03 JUN</span>
+      <span class="tl-l">✈ ATH → AUH → KUL · EY190</span>
+    </div>
+
+    <hr class="div-dash">
+
+    <!-- ── HOTELS ── -->
+    <div class="sec-label">— Hotel —</div>
+    <div class="dots-row">
+      <span class="dot-label">Historical Center Studios</span>
+      <span class="dot-fill"></span>
+      <span class="dot-val">✓ BOOKED</span>
+    </div>
+    <div class="dim indent-sm">Athens · Psiri · 27–29 Mei</div>
+    <div class="dots-row mt2">
+      <span class="dot-label">Hotel Tirana</span>
+      <span class="dot-fill"></span>
+      <span class="dot-val">TBC</span>
+    </div>
+    <div class="dim indent-sm">Tirana · 29 Mei – 01 Jun</div>
+    <div class="dots-row mt2">
+      <span class="dot-label">Koroni Boutique Hotel ★5.0</span>
+      <span class="dot-fill"></span>
+      <span class="dot-val">✓ BOOKED</span>
+    </div>
+    <div class="dim indent-sm">Berat · 30–31 Mei</div>
+    <div class="dots-row mt2">
+      <span class="dot-label">Hotel Athens (Fasa 2)</span>
+      <span class="dot-fill"></span>
+      <span class="dot-val">TBC</span>
+    </div>
+    <div class="dim indent-sm">Athens · 01–03 Jun</div>
+
+    <hr class="div-solid">
+
+    <!-- ════════════════════════ DAY 01 ════ -->
+    <div class="day-head">
+      <span class="day-num">01</span>
+      <span class="day-city">Athens — Tiba</span>
+      <span>Rabu · 27 Mei</span>
+    </div>
+
+    <div class="tl"><span class="tl-t">~09:30</span><span class="tl-l">Mendarat ATH (dari Abu Dhabi)</span></div>
+    <div class="tl">
+      <span class="tl-t">10:00</span>
+      <span class="tl-l">Metro → Monastiraki</span>
+      <span class="tl-v">pas 3-hari €20</span>
+    </div>
+    <div class="tl"><span class="tl-t">10:30</span><span class="tl-l">Check-in: Historical Center Studios <span class="booked">BOOKED</span></span></div>
+    <div class="indent dim">Psiri neighbourhood</div>
+    <div class="tl"><span class="tl-t">14:00</span><span class="tl-l">Pasar Monastiraki · shopping</span></div>
+    <div class="tl">
+      <span class="tl-t">16:00</span>
+      <span class="tl-l">Muzium Acropolis</span>
+      <span class="tl-v">€10/pax</span>
+    </div>
+    <div class="tl"><span class="tl-t">19:00</span><span class="tl-l">Blloku style evening walk</span></div>
+    <div class="tl"><span class="tl-t">20:00</span><span class="tl-l">Makan malam: Yalla Yalla <span class="halal">HALAL</span></span><span class="tl-v">€7–15</span></div>
+    <div class="indent dim">Lebanese · Monastiraki</div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 02 ════ -->
+    <div class="day-head">
+      <span class="day-num">02</span>
+      <span class="day-city">Athens — Acropolis</span>
+      <span>Khamis · 28 Mei</span>
+    </div>
+
+    <div class="tl">
+      <span class="tl-t">09:00</span>
+      <span class="tl-l">Bukit Acropolis</span>
+      <span class="tl-v">€20/pax</span>
+    </div>
+    <div class="tl"><span class="tl-t">11:30</span><span class="tl-l">Ancient Agora · Kuil Hephaestus</span></div>
+    <div class="tl"><span class="tl-t">13:00</span><span class="tl-l">Makan tengahari: Indian Chef <span class="halal">HALAL</span></span><span class="tl-v">€10–18</span></div>
+    <div class="tl"><span class="tl-t">15:00</span><span class="tl-l">Taman Negara · Parlimen</span></div>
+    <div class="tl"><span class="tl-t">17:00</span><span class="tl-l">Dataran Syntagma</span></div>
+    <div class="tl"><span class="tl-t">20:00</span><span class="tl-l">Makan malam: Namaste Indian <span class="halal">HALAL</span></span><span class="tl-v">€12–20</span></div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 03 ════ -->
+    <div class="day-head">
+      <span class="day-num">03</span>
+      <span class="day-city">Athens → Tirana</span>
+      <span>Jumaat · 29 Mei</span>
+    </div>
+
+    <div class="tl">
+      <span class="tl-t">09:00</span>
+      <span class="tl-l">Bounce — simpan bagasi (3 hari)</span>
+      <span class="tl-v">€12.75</span>
+    </div>
+    <div class="tl"><span class="tl-t">09:30</span><span class="tl-l">Jalan-jalan Monastiraki</span></div>
+    <div class="tl"><span class="tl-t">12:30</span><span class="tl-l">Check-out → Airport</span></div>
+    <div class="tl">
+      <span class="tl-t">16:00</span>
+      <span class="tl-l bold">✈ ATH → TIA</span>
+      <span class="tl-v">~1 jam</span>
+    </div>
+    <div class="tl"><span class="tl-t">17:30</span><span class="tl-l">Pazari i Ri — Bazar Baru (cenderahati)</span></div>
+    <div class="tl"><span class="tl-t">18:30</span><span class="tl-l">Masjid Et'hem Bej · solat Maghrib</span></div>
+    <div class="tl"><span class="tl-t">20:30</span><span class="tl-l">Makan malam: Hayal Et <span class="halal">HALAL</span></span><span class="tl-v">€10–20</span></div>
+    <div class="indent dim">Turkish Grill · Blloku, Tirana</div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 04 ════ -->
+    <div class="day-head">
+      <span class="day-num">04</span>
+      <span class="day-city">Krujë + Berat</span>
+      <span>Sabtu · 30 Mei</span>
+    </div>
+
+    <div class="tl">
+      <span class="tl-t">08:30</span>
+      <span class="tl-l">Furgon → Krujë (~45 min)</span>
+      <span class="tl-v">€2/pax</span>
+    </div>
+    <div class="tl">
+      <span class="tl-t">09:15</span>
+      <span class="tl-l">Benteng Krujë + Muzium Skanderbeg</span>
+      <span class="tl-v">€5/pax</span>
+    </div>
+    <div class="indent dim">09:15 – 11:15 (2 jam)</div>
+    <div class="tl"><span class="tl-t">11:15</span><span class="tl-l">Bazar Lama Çarshia — beli cenderahati!</span></div>
+    <div class="tl">
+      <span class="tl-t">12:00</span>
+      <span class="tl-l">Teksi → Tirana</span>
+      <span class="tl-v">€15–18</span>
+    </div>
+    <div class="tl"><span class="tl-t">13:00</span><span class="tl-l">Makan tengahari: Capitol <span class="halal">HALAL</span></span></div>
+    <div class="tl">
+      <span class="tl-t">14:30</span>
+      <span class="tl-l">Bas → Berat (~2.5 jam)</span>
+      <span class="tl-v">€4/pax</span>
+    </div>
+    <div class="tl"><span class="tl-t">17:00</span><span class="tl-l">Check-in: Koroni Boutique Hotel <span class="booked">BOOKED</span></span></div>
+    <div class="indent dim">★5.0 · 421 ulasan · Near Gorica Bridge</div>
+    <div class="tl"><span class="tl-t">17:30</span><span class="tl-l">Kawasan Mangalem + Jambatan Gorica</span></div>
+    <div class="tl"><span class="tl-t">18:30</span><span class="tl-l">Matahari terbenam — pemandangan terbaik</span></div>
+    <div class="tl"><span class="tl-t">19:30</span><span class="tl-l">Makan malam: Rus Traditional Food <span class="halal">HALAL</span></span></div>
+    <div class="indent dim">★4.9 · 118 sebutan halal · Mangalem</div>
+    <div class="tl"><span class="tl-t">Malam</span><span class="tl-l bold">★ MENGINAP — BERAT ★</span></div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 05 ════ -->
+    <div class="day-head">
+      <span class="day-num">05</span>
+      <span class="day-city">Berat → Tirana</span>
+      <span>Ahad · 31 Mei</span>
+    </div>
+
+    <div class="tl"><span class="tl-t">07:30</span><span class="tl-l">Jalan pagi — Berat sebelum ramai</span></div>
+    <div class="tl"><span class="tl-t">09:00</span><span class="tl-l">Sarapan @ Koroni · Check-out</span></div>
+    <div class="tl">
+      <span class="tl-t">10:00</span>
+      <span class="tl-l">Bas → Tirana (~2.5 jam)</span>
+      <span class="tl-v">€4/pax</span>
+    </div>
+    <div class="tl"><span class="tl-t">12:30</span><span class="tl-l">Tiba Tirana · letak beg di hotel</span></div>
+    <div class="tl"><span class="tl-t">13:00</span><span class="tl-l">Makan tengahari: Restorant Tymi <span class="halal">HALAL</span></span></div>
+    <div class="tl">
+      <span class="tl-t">14:00</span>
+      <span class="tl-l">Bunk'Art 2 — Muzium Bunker Komunis</span>
+      <span class="tl-v">€3/pax</span>
+    </div>
+    <div class="indent dim">Near Skanderbeg Square · 14:00–16:30</div>
+    <div class="tl"><span class="tl-t">17:00</span><span class="tl-l">Masjid Namazgah (Grand Mosque)</span></div>
+    <div class="tl"><span class="tl-t">19:30</span><span class="tl-l">Makan malam: NUR Restaurant <span class="halal">HALAL</span></span></div>
+    <div class="tl"><span class="tl-t">21:00</span><span class="tl-l">Tidur awal <span class="warn">⚠ BOOK TEKSI 04:15!</span></span></div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 06 ════ -->
+    <div class="day-head">
+      <span class="day-num">06</span>
+      <span class="day-city">Tirana → Athens</span>
+      <span>Isnin · 01 Jun</span>
+    </div>
+
+    <div class="tl">
+      <span class="tl-t">04:15</span>
+      <span class="tl-l">Teksi → Lapangan Terbang TIA</span>
+      <span class="tl-v">€20–25</span>
+    </div>
+    <div class="tl"><span class="tl-t">Pagi</span><span class="tl-l bold">✈ TIA → ATH · awal pagi</span></div>
+    <div class="tl"><span class="tl-t">09:00</span><span class="tl-l">Ambil beg Bounce · check-in hotel</span></div>
+    <div class="tl"><span class="tl-t">10:00</span><span class="tl-l">Rehat — recovery penerbangan awal</span></div>
+    <div class="tl">
+      <span class="tl-t">15:00</span>
+      <span class="tl-l">Piraeus · Falafellas <span class="halal">HALAL</span></span>
+    </div>
+    <div class="indent dim">Scout terminal feri untuk esok</div>
+    <div class="tl"><span class="tl-t">19:30</span><span class="tl-l">Makan malam: NaanStop <span class="halal">HALAL</span></span></div>
+    <div class="tl"><span class="tl-t">Malam</span><span class="tl-l">Book feri Aegina (ferryhopper.com)</span></div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 07 ════ -->
+    <div class="day-head">
+      <span class="day-num">07</span>
+      <span class="day-city">Pulau Aegina</span>
+      <span>Selasa · 02 Jun</span>
+    </div>
+
+    <div class="tl">
+      <span class="tl-t">07:00</span>
+      <span class="tl-l">⛴ Feri Piraeus → Aegina</span>
+      <span class="tl-v">€7–9</span>
+    </div>
+    <div class="tl"><span class="tl-t">08:30</span><span class="tl-l">Tiba Aegina Town</span></div>
+    <div class="tl"><span class="tl-t">09:30</span><span class="tl-l">Pantai Kolona — cari sea glass + berenang</span></div>
+    <div class="indent dim">Beside Temple of Apollo column</div>
+    <div class="tl"><span class="tl-t">13:00</span><span class="tl-l">Makan tengahari — beli pistasio Aegina!</span></div>
+    <div class="tl">
+      <span class="tl-t">16:00</span>
+      <span class="tl-l">⛴ Feri → Piraeus</span>
+      <span class="tl-v">€7–9</span>
+    </div>
+    <div class="tl"><span class="tl-t">18:00</span><span class="tl-l">Monastiraki — cenderahati terakhir</span></div>
+    <div class="tl">
+      <span class="tl-t">19:30</span>
+      <span class="tl-l">Bukit Lycabettus (funicular)</span>
+      <span class="tl-v">€7</span>
+    </div>
+    <div class="indent dim">360° panorama · sunset ~20:40</div>
+    <div class="tl"><span class="tl-t">21:30</span><span class="tl-l">Makan malam: Aladdin Restaurant <span class="halal">HALAL</span></span></div>
+
+    <hr class="div-dash">
+
+    <!-- ════════════════════════ DAY 08 ════ -->
+    <div class="day-head">
+      <span class="day-num">08</span>
+      <span class="day-city">Pulang ke KL</span>
+      <span>Rabu · 03 Jun</span>
+    </div>
+
+    <div class="tl"><span class="tl-t">Pagi</span><span class="tl-l">Check-out hotel</span></div>
+    <div class="tl">
+      <span class="tl-t">TBD</span>
+      <span class="tl-l">Metro → Lapangan Terbang ATH</span>
+      <span class="tl-v">€9/pax</span>
+    </div>
+    <div class="indent dim">Line 3 (Biru) · ~40 min · 3 jam sebelum</div>
+    <div class="tl"><span class="tl-t">EY190</span><span class="tl-l bold">✈ ATH → AUH → KUL</span></div>
+    <div class="indent dim">Etihad Airways · Selamat pulang ♡</div>
+
+    <hr class="div-solid">
+
+    <!-- ── COST SUMMARY ── -->
+    <div class="sec-label">— Anggaran Kos (per pax) —</div>
+
+    <div class="sum-box">
+      <div class="sum-title">RINGKASAN KEWANGAN</div>
+
+      <div class="dots-row"><span class="dot-label">Metro pas 3-hari (×2 fasa)</span><span class="dot-fill"></span><span class="dot-val">€40</span></div>
+      <div class="dots-row"><span class="dot-label">Muzium Acropolis</span><span class="dot-fill"></span><span class="dot-val">€10</span></div>
+      <div class="dots-row"><span class="dot-label">Masuk Acropolis</span><span class="dot-fill"></span><span class="dot-val">€20</span></div>
+      <div class="dots-row"><span class="dot-label">Bounce simpan beg (kongsi)</span><span class="dot-fill"></span><span class="dot-val">~€6.50</span></div>
+      <div class="dots-row"><span class="dot-label">Feri Aegina return</span><span class="dot-fill"></span><span class="dot-val">€14–18</span></div>
+      <div class="dots-row"><span class="dot-label">Funicular Lycabettus</span><span class="dot-fill"></span><span class="dot-val">€7</span></div>
+      <div class="dots-row"><span class="dot-label">Bas Albania (semua)</span><span class="dot-fill"></span><span class="dot-val">~€20</span></div>
+      <div class="dots-row"><span class="dot-label">Masuk Albania (Bunk'Art + castle)</span><span class="dot-fill"></span><span class="dot-val">~€10</span></div>
+
+      <div class="sum-total">JUMLAH ~€127–132 / pax<br><span style="font-size:9px; color:#666;">(tidak termasuk penerbangan, hotel, makanan)</span></div>
+    </div>
+
+    <!-- ── STATS ── -->
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-n">8</div>
+        <div class="stat-l">Hari</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">2</div>
+        <div class="stat-l">Negara</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">5</div>
+        <div class="stat-l">Bandar</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">14+</div>
+        <div class="stat-l">Halal Meals</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">1</div>
+        <div class="stat-l">Pulau</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">1</div>
+        <div class="stat-l">UNESCO City</div>
+      </div>
+    </div>
+
+    <!-- ── BARCODE ── -->
+    <div class="barcode-wrap">
+      <div class="barcode">
+        <div class="b" style="width:2px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:2px"></div>
+        <div class="b" style="width:3px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:1px"></div>
+        <div class="b" style="width:2px"></div><div style="width:3px"></div>
+        <div class="b" style="width:1px"></div><div style="width:1px"></div>
+        <div class="b" style="width:3px"></div><div style="width:2px"></div>
+        <div class="b" style="width:1px"></div><div style="width:1px"></div>
+        <div class="b" style="width:2px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:3px"></div>
+        <div class="b" style="width:2px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:2px"></div>
+        <div class="b" style="width:3px"></div><div style="width:1px"></div>
+        <div class="b" style="width:2px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:2px"></div>
+        <div class="b" style="width:1px"></div><div style="width:1px"></div>
+        <div class="b" style="width:3px"></div><div style="width:2px"></div>
+        <div class="b" style="width:1px"></div><div style="width:1px"></div>
+        <div class="b" style="width:2px"></div><div style="width:3px"></div>
+        <div class="b" style="width:1px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:2px"></div>
+        <div class="b" style="width:2px"></div><div style="width:1px"></div>
+        <div class="b" style="width:3px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:2px"></div>
+        <div class="b" style="width:2px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:3px"></div>
+        <div class="b" style="width:3px"></div><div style="width:1px"></div>
+        <div class="b" style="width:1px"></div><div style="width:2px"></div>
+        <div class="b" style="width:2px"></div>
+      </div>
+      <div class="barcode-num">ATH-ALB-2026-0527</div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <div class="footer">
+      <div class="footer-main">SELAMAT JALAN ✦ SAFE TRAVELS</div>
+      <div>Semoga perjalanan diberkati · Have a blessed trip</div>
+      <div style="margin-top:6px;">✦ ✦ ✦</div>
+    </div>
+
+  </div><!-- /.body -->
+
+  <div class="tear tear-bottom"></div>
+</div>
+
+</body>
+</html>
