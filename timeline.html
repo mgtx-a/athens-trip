@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerary · Athens + Albania 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --athens: #1b4870;
+  --albania: #8b3a1a;
+  --berat: #6b1a3a;
+  --bg: #f5f4f1;
+  --card: #ffffff;
+  --ink: #111;
+  --muted: #999;
+  --faint: #e8e6e2;
+  --halal: #2d6e2d;
+  --ff: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--ff);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 28px 20px 48px;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.top {
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+.trip-name {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+.trip-meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.legend {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.leg-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0;
+}
+.leg-halal { width: 6px; height: 6px; border-radius: 50%; background: var(--halal); flex-shrink: 0; }
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── DAY CARD ── */
+.card {
+  background: var(--card);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--faint);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px 8px;
+  border-bottom: 1px solid var(--faint);
+}
+.day-n {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+  background: var(--phase-col, #666);
+  padding: 2px 7px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.day-info { flex: 1; min-width: 0; }
+.day-date {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.day-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--phase-col, #333);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* phase colors */
+.athens  { --phase-col: var(--athens); }
+.albania { --phase-col: var(--albania); }
+.berat   { --phase-col: var(--berat); }
+
+/* ── TIMELINE ── */
+.tl { padding: 8px 12px 10px; display: flex; flex-direction: column; gap: 3px; }
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+.t {
+  font-size: 10px;
+  color: var(--muted);
+  min-width: 38px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  padding-top: 1px;
+}
+.a { color: var(--ink); flex: 1; }
+.a.bold { font-weight: 600; }
+.a.dim { color: #777; font-size: 10.5px; }
+
+/* cost badge */
+.cost {
+  font-size: 9.5px;
+  color: var(--muted);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* halal dot */
+.h {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--halal);
+  vertical-align: middle;
+  margin-left: 4px;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+
+/* divider within day */
+.sep {
+  border: none;
+  border-top: 1px dashed var(--faint);
+  margin: 4px 0;
+}
+
+/* booked tag */
+.tag {
+  font-size: 9px;
+  border: 1px solid currentColor;
+  padding: 0px 4px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 3px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* flight row */
+.flight-row {
+  background: #f0f4f8;
+  border-radius: 3px;
+  padding: 4px 6px;
+  margin: 2px 0;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--athens);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* overnight badge */
+.overnight {
+  font-size: 10px;
+  background: var(--phase-col, #333);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-top: 3px;
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  body { padding: 20px 14px 40px; }
+  .trip-name { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="top">
+  <div class="trip-name">Athens · Albania</div>
+  <div class="trip-meta">
+    <span>27 May – 3 Jun 2026</span>
+    <span>Afham + Alya</span>
+    <span>8 Days · 2 Countries · 5 Cities</span>
+  </div>
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:var(--athens)"></div> Athens</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--albania)"></div> Albania</div>
+    <div class="leg"><div class="leg-dot" style="background:var(--berat)"></div> Berat overnight</div>
+    <div class="leg"><div class="leg-halal"></div> Halal confirmed</div>
+  </div>
+</div>
+
+<!-- ── GRID ── -->
+<div class="grid">
+
+  <!-- ══ D01 ══ -->
+  <div class="card athens">
+    <div class="card-head">
+      <div class="day-n">D01</div>
+      <div class="day-info">
+        <div class="day-date">Wed · 27 May 2026</div>
+        <div class="day-title">Arrive Athens</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">~09:30</span><span class="a">Land ATH (from Abu Dhabi)</span></div>
+      <div class="row"><span class="t">10:00</span><span class="a">Metro → Monastiraki</span><span class="cost">3-day pass €20</span></div>
+      <div class="row"><span class="t">10:30</span><span class="a">Check-in — Historical Center Studios <span class="tag">BOOKED</span></span></div>
+      <div class="row"><span class="t"></span><span class="a dim">Psiri, Athens</span></div>
+      <hr class="sep">
+      <div class="row"><span class="t">14:00</span><span class="a">Monastiraki flea market browse</span></div>
+      <div class="row"><span class="t">16:00</span><span class="a">Acropolis Museum</span><span class="cost">€10</span></div>
+      <div class="row"><span class="t">20:00</span><span class="a">Dinner — Yalla Yalla<span class="h"></span></span><span class="cost">€7–15</span></div>
+    </div>
+  </div>
+
+  <!-- ══ D02 ══ -->
+  <div class="card athens">
+    <div class="card-head">
+      <div class="day-n">D02</div>
+      <div class="day-info">
+        <div class="day-date">Thu · 28 May 2026</div>
+        <div class="day-title">Athens — Acropolis Day</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">09:00</span><span class="a">Acropolis Hill</span><span class="cost">€20</span></div>
+      <div class="row"><span class="t">11:30</span><span class="a">Ancient Agora · Temple of Hephaestus</span></div>
+      <div class="row"><span class="t">13:00</span><span class="a">Lunch — Indian Chef<span class="h"></span></span><span class="cost">€10–18</span></div>
+      <hr class="sep">
+      <div class="row"><span class="t">15:00</span><span class="a">National Garden · Parliament</span></div>
+      <div class="row"><span class="t">17:00</span><span class="a">Syntagma Square</span></div>
+      <div class="row"><span class="t">20:00</span><span class="a">Dinner — Namaste Indian<span class="h"></span></span><span class="cost">€12–20</span></div>
+    </div>
+  </div>
+
+  <!-- ══ D03 ══ -->
+  <div class="card athens">
+    <div class="card-head">
+      <div class="day-n">D03</div>
+      <div class="day-info">
+        <div class="day-date">Fri · 29 May 2026</div>
+        <div class="day-title">Athens → Tirana</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">09:00</span><span class="a">Bounce — store bags (3 days)</span><span class="cost">€12.75</span></div>
+      <div class="row"><span class="t">09:30</span><span class="a">Monastiraki last browse</span></div>
+      <div class="row"><span class="t">12:30</span><span class="a">Check-out → Airport</span></div>
+      <div class="flight-row">✈ 16:00 · ATH → TIA · ~1 hr</div>
+      <hr class="sep">
+      <div class="row"><span class="t">17:30</span><span class="a">Pazari i Ri — New Bazaar (souvenirs)</span></div>
+      <div class="row"><span class="t">18:30</span><span class="a">Et'hem Bej Mosque · Maghrib</span></div>
+      <div class="row"><span class="t">20:30</span><span class="a">Dinner — Hayal Et<span class="h"></span></span><span class="cost">€10–20</span></div>
+    </div>
+  </div>
+
+  <!-- ══ D04 ══ -->
+  <div class="card albania">
+    <div class="card-head">
+      <div class="day-n">D04</div>
+      <div class="day-info">
+        <div class="day-date">Sat · 30 May 2026</div>
+        <div class="day-title">Krujë Morning · Berat Overnight</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">08:30</span><span class="a bold">Furgon → Krujë (~45 min)</span><span class="cost">€2</span></div>
+      <div class="row"><span class="t">09:15</span><span class="a">Krujë Castle + Skanderbeg Museum</span><span class="cost">€5</span></div>
+      <div class="row"><span class="t">11:15</span><span class="a">Old Bazaar Çarshia — souvenirs</span></div>
+      <div class="row"><span class="t">12:00</span><span class="a">Taxi → Tirana</span><span class="cost">€15–18</span></div>
+      <div class="row"><span class="t">13:00</span><span class="a">Lunch — Capitol<span class="h"></span></span></div>
+      <div class="row"><span class="t">14:30</span><span class="a bold">Bus → Berat (~2.5 hrs)</span><span class="cost">€4</span></div>
+      <hr class="sep">
+      <div class="row"><span class="t">17:00</span><span class="a">Check-in — Koroni Boutique ★5.0 <span class="tag">BOOKED</span></span></div>
+      <div class="row"><span class="t">17:30</span><span class="a">Mangalem Quarter · Gorica Bridge</span></div>
+      <div class="row"><span class="t">18:30</span><span class="a">Sunset — best view in Berat</span></div>
+      <div class="row"><span class="t">19:30</span><span class="a">Dinner — Rus Traditional Food<span class="h"></span></span></div>
+      <div><span class="overnight">★ Overnight — Berat</span></div>
+    </div>
+  </div>
+
+  <!-- ══ D05 ══ -->
+  <div class="card berat">
+    <div class="card-head">
+      <div class="day-n">D05</div>
+      <div class="day-info">
+        <div class="day-date">Sun · 31 May 2026</div>
+        <div class="day-title">Berat Morning · Back to Tirana</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">07:30</span><span class="a">Morning stroll — Berat before crowds</span></div>
+      <div class="row"><span class="t">09:00</span><span class="a">Breakfast @ Koroni · Check-out</span></div>
+      <div class="row"><span class="t">10:00</span><span class="a bold">Bus → Tirana (~2.5 hrs)</span><span class="cost">€4</span></div>
+      <div class="row"><span class="t">12:30</span><span class="a">Arrive Tirana</span></div>
+      <hr class="sep">
+      <div class="row"><span class="t">13:00</span><span class="a">Lunch — Restorant Tymi<span class="h"></span></span></div>
+      <div class="row"><span class="t">14:00</span><span class="a">Bunk'Art 2 — Communist bunker museum</span><span class="cost">€3</span></div>
+      <div class="row"><span class="t">17:00</span><span class="a">Namazgah Grand Mosque</span></div>
+      <div class="row"><span class="t">19:30</span><span class="a">Dinner — NUR Restaurant<span class="h"></span></span></div>
+      <div class="row"><span class="t">21:00</span><span class="a dim">⚠ Book 04:15 taxi tonight</span></div>
+    </div>
+  </div>
+
+  <!-- ══ D06 ══ -->
+  <div class="card athens">
+    <div class="card-head">
+      <div class="day-n">D06</div>
+      <div class="day-info">
+        <div class="day-date">Mon · 1 Jun 2026</div>
+        <div class="day-title">Tirana → Athens · Piraeus</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">04:15</span><span class="a bold">Taxi → TIA airport</span><span class="cost">€20–25</span></div>
+      <div class="flight-row">✈ Early AM · TIA → ATH</div>
+      <div class="row"><span class="t">09:00</span><span class="a">Bounce collect bags · hotel check-in</span></div>
+      <div class="row"><span class="t">10:00</span><span class="a dim">Rest — early flight recovery</span></div>
+      <hr class="sep">
+      <div class="row"><span class="t">15:00</span><span class="a">Piraeus — Falafellas<span class="h"></span> · scout ferry</span></div>
+      <div class="row"><span class="t">19:30</span><span class="a">Dinner — NaanStop Indian<span class="h"></span></span></div>
+      <div class="row"><span class="t">Night</span><span class="a dim">Book Aegina ferry (ferryhopper.com)</span></div>
+    </div>
+  </div>
+
+  <!-- ══ D07 ══ -->
+  <div class="card athens">
+    <div class="card-head">
+      <div class="day-n">D07</div>
+      <div class="day-info">
+        <div class="day-date">Tue · 2 Jun 2026</div>
+        <div class="day-title">Aegina Island · Lycabettus</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">07:00</span><span class="a bold">⛴ Ferry → Aegina</span><span class="cost">€7–9</span></div>
+      <div class="row"><span class="t">08:30</span><span class="a">Arrive Aegina Town</span></div>
+      <div class="row"><span class="t">09:30</span><span class="a">Kolona Beach — sea glass + swim</span></div>
+      <div class="row"><span class="t">13:00</span><span class="a">Lunch · buy pistachios!</span></div>
+      <div class="row"><span class="t">16:00</span><span class="a bold">⛴ Ferry → Piraeus</span><span class="cost">€7–9</span></div>
+      <hr class="sep">
+      <div class="row"><span class="t">18:00</span><span class="a">Monastiraki — final souvenirs</span></div>
+      <div class="row"><span class="t">19:30</span><span class="a">Lycabettus Hill (funicular)</span><span class="cost">€7</span></div>
+      <div class="row"><span class="t"></span><span class="a dim">360° sunset view ~20:40</span></div>
+      <div class="row"><span class="t">21:30</span><span class="a">Dinner — Aladdin Restaurant<span class="h"></span></span></div>
+    </div>
+  </div>
+
+  <!-- ══ D08 ══ -->
+  <div class="card athens">
+    <div class="card-head">
+      <div class="day-n">D08</div>
+      <div class="day-info">
+        <div class="day-date">Wed · 3 Jun 2026</div>
+        <div class="day-title">Fly Home — ATH → KUL</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="row"><span class="t">Morning</span><span class="a">Hotel check-out</span></div>
+      <div class="row"><span class="t">TBD</span><span class="a">Metro → Athens Airport</span><span class="cost">€9</span></div>
+      <div class="row"><span class="t"></span><span class="a dim">Line 3 · ~40 min · allow 3 hrs</span></div>
+      <hr class="sep">
+      <div class="flight-row">✈ EY190 · ATH → AUH → KUL</div>
+      <div class="row"><span class="t"></span><span class="a dim">Etihad Airways · Selamat pulang ♡</span></div>
+    </div>
+  </div>
+
+</div><!-- /.grid -->
+
+</body>
+</html>
