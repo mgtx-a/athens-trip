@@ -658,6 +658,59 @@ body {
   .flight-bar { flex-wrap: wrap; gap: 10px; }
   .phase-name { font-size: 1.6rem; }
 }
+
+/* ── EDIT MODE ──────────────────────────────────────── */
+#edit-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+  font-family: var(--ff-mono);
+}
+#edit-toggle {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--athens); color: #fff; border: none;
+  font-size: 18px; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.28);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, transform .15s;
+}
+#edit-toggle:hover { transform: scale(1.08); }
+#edit-toggle.active { background: #b91c1c; }
+#edit-panel { display: none; flex-direction: column; gap: 6px; align-items: flex-end; }
+#edit-panel.open { display: flex; }
+.edit-action {
+  background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+  padding: 6px 14px; font-size: 11px; font-family: var(--ff-mono);
+  cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  white-space: nowrap; color: var(--ink); transition: background .15s;
+}
+.edit-action:hover { background: var(--parchment); }
+.edit-action.danger { color: #b91c1c; }
+#edit-toast {
+  position: fixed; bottom: 82px; right: 24px;
+  background: var(--sage); color: #fff; padding: 5px 13px;
+  border-radius: 20px; font-size: 11px; font-family: var(--ff-mono);
+  opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 9998;
+}
+#edit-toast.show { opacity: 1; }
+#edit-banner {
+  display: none; position: fixed; top: 0; left: 0; right: 0;
+  background: var(--gold); color: var(--ink); font-family: var(--ff-mono);
+  font-size: 11px; text-align: center; padding: 5px;
+  z-index: 9997; letter-spacing: .05em;
+}
+body.edit-mode #edit-banner { display: block; }
+body.edit-mode [data-eid] {
+  outline: 1.5px dashed rgba(12,40,64,.25);
+  border-radius: 2px; min-width: 12px;
+}
+body.edit-mode [data-eid]:hover {
+  outline: 2px solid var(--athens-mid);
+  background: rgba(12,40,64,.05); cursor: text;
+}
+body.edit-mode [data-eid]:focus {
+  outline: 2px solid var(--gold);
+  background: rgba(184,136,46,.08); cursor: text;
+}
 </style>
 </head>
 <body>
@@ -2287,6 +2340,96 @@ function scrollPhase(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+// ── EDIT MODE ──────────────────────────────────────────────────────────────
+const EDIT_STORE = 'iti-edits-v2';
+let _toastTimer;
+
+function editGetAll() {
+  try { return JSON.parse(localStorage.getItem(EDIT_STORE) || '{}'); } catch { return {}; }
+}
+function editSave(id, html) {
+  const d = editGetAll(); d[id] = html;
+  localStorage.setItem(EDIT_STORE, JSON.stringify(d));
+  const t = document.getElementById('edit-toast');
+  clearTimeout(_toastTimer);
+  t.classList.add('show');
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+function editInit() {
+  const selectors = [
+    '.tl-time', '.tl-label',
+    '.flight-num', '.flight-time', '.flight-iata', '.flight-city',
+    '.ds-pill', '.day-title', '.day-date',
+    '.stat-big', '.stat-label',
+    '.rl-name', '.rl-meta',
+    '.phase-number', '.phase-name',
+  ];
+  let n = 0;
+  const mark = el => { if (!el.dataset.eid) el.dataset.eid = 'e' + n++; };
+  selectors.forEach(s => document.querySelectorAll(s).forEach(mark));
+  document.querySelectorAll('.tl-detail').forEach(el => { if (el.children.length === 0) mark(el); });
+  document.querySelectorAll('.ct-row span').forEach(mark);
+  document.querySelectorAll('.info').forEach(mark);
+
+  // Restore saved edits
+  const saved = editGetAll();
+  document.querySelectorAll('[data-eid]').forEach(el => {
+    if (saved[el.dataset.eid] !== undefined) el.innerHTML = saved[el.dataset.eid];
+  });
+}
+
+function editEnable() {
+  document.querySelectorAll('[data-eid]').forEach(el => {
+    el.contentEditable = 'true';
+    el.oninput = () => editSave(el.dataset.eid, el.innerHTML);
+  });
+}
+function editDisable() {
+  document.querySelectorAll('[data-eid]').forEach(el => {
+    el.contentEditable = 'false';
+    el.oninput = null;
+  });
+}
+
+function editToggle() {
+  const on = document.body.classList.toggle('edit-mode');
+  const btn = document.getElementById('edit-toggle');
+  const panel = document.getElementById('edit-panel');
+  btn.classList.toggle('active', on);
+  btn.textContent = on ? '✕' : '✏';
+  btn.title = on ? 'Exit edit mode' : 'Edit itinerary';
+  panel.classList.toggle('open', on);
+  on ? editEnable() : editDisable();
+}
+
+function editReset() {
+  if (!confirm('Remove all your edits and restore original text?')) return;
+  localStorage.removeItem(EDIT_STORE);
+  location.reload();
+}
+
+function editDownload() {
+  const blob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], { type: 'text/html' });
+  const a = Object.assign(document.createElement('a'), {
+    href: URL.createObjectURL(blob), download: 'itinerary.html'
+  });
+  a.click();
+}
+
+editInit();
 </script>
+
+<!-- ── EDIT MODE TOOLBAR ── -->
+<div id="edit-toast">✓ saved</div>
+<div id="edit-banner">✏ EDIT MODE ON — click any text to edit · changes auto-saved in browser</div>
+<div id="edit-fab">
+  <div id="edit-panel">
+    <button class="edit-action" onclick="editDownload()">⬇ Download HTML</button>
+    <button class="edit-action danger" onclick="editReset()">↺ Reset all edits</button>
+  </div>
+  <button id="edit-toggle" onclick="editToggle()" title="Edit itinerary">✏</button>
+</div>
 </body>
 </html>
